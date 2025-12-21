@@ -30,7 +30,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Bushido...Integrity...Trust NFT  
+          Bushido...Integrity...Trust NFT :) 
         </p>       
         <Cards />
         <a
