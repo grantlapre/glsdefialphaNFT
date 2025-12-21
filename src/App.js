@@ -39,7 +39,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          GLSDefi Alpha Project Launched 9/1/2025
+          GLSDefi Alpha Project Launched 21/12/2025
         </a>
       </header>
       
