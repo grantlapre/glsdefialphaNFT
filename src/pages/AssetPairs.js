@@ -63,21 +63,44 @@ export default function AssetPairs() {
                 background: "#fff",
               }}
             >
-              <div style={{ display: "flex", justifyContent: "space-between", gap: 12, flexWrap: "wrap" }}>
+      {/* ASSET HEADER */}
+      <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  gap: 16,
+                  flexWrap: "wrap",
+                }}
+              >
                 <div>
-                  <h2 style={{ margin: 0 }}>{asset.name}</h2>
-                  <div style={{ marginTop: 6, opacity: 0.85 }}>
-                    <strong>Asset Code:</strong> {asset.code} &nbsp;|&nbsp; <strong>Status:</strong> {asset.status}
+                  <h2 style={{ marginBottom: 6 }}>{asset.name}</h2>
+                  <div>
+                    <strong>Asset Code:</strong> {asset.code}
                   </div>
+                  <div>
+                    <strong>Status:</strong> {asset.status}
+                  </div>
+
+
                 </div>
 
                 <div style={{ textAlign: "right" }}>
-                  <div><strong>Value:</strong> {money(asset.valueUsd)}</div>
-                  <div><strong>Total NFTs:</strong> {asset.totalNfts} (1/{asset.totalNfts})</div>
-                  <div><strong>Per NFT (ref):</strong> {money(perNft)}</div>
-                  <div><strong>Assigned NFTs on this page:</strong> {assigned.length}</div>
+                  <div>
+                    <strong>Asset Value:</strong> {money(asset.valueUsd)}
+                  </div>
+                  <div>
+                    <strong>Total NFTs:</strong> {asset.totalNfts}
+                  </div>
+                  <div>
+                    <strong>Per NFT (ref):</strong> {money(perNft)}
+                  </div>
+                  <div>
+                    <strong>NFTs Shown:</strong> {assigned.length}
+                  </div>
                 </div>
               </div>
+
+              
 
               {/* MIGRATION CONTROLS */}
               <div style={{ marginTop: 12, display: "flex", gap: 10, flexWrap: "wrap", alignItems: "center" }}>

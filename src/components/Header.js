@@ -1,4 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
+import { Link } from "react-router-dom";
+
 
 export default function Header() {
   const [address, setAddress] = useState("");
@@ -94,9 +96,14 @@ export default function Header() {
               </button>
             </>
           ) : (
+            <div style={{ display: "flex", gap: 12 }}>
             <button className="wallet-btn" onClick={connect} type="button">
               Connect Wallet
             </button>
+            <Link to="/marketplace" className="App-link">
+              Market
+            </Link>
+          </div>
           )}
         </div>
       </nav>

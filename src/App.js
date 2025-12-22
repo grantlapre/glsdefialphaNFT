@@ -7,6 +7,8 @@ import Cards from "./components/cards";
 
 import { HashRouter, Routes, Route, Link } from "react-router-dom";
 import AssetPairs from "./pages/AssetPairs";
+import GLSDefiMarket from "./pages/GLSDefiMarket";
+
 
 function Home() {
   return (
@@ -25,6 +27,10 @@ function Home() {
         <div style={{ marginTop: 12 }}>
           <Link to="/asset-pairs" className="App-link">
             View Asset ↔ NFT Pairs
+          </Link>
+          <br />
+          <Link to="/marketplace" className="App-link">
+            View Items for Sale
           </Link>
         </div>
       </Container>
@@ -54,6 +60,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/asset-pairs" element={<AssetPairs />} />
+        <Route path="/marketplace" element={<GLSDefiMarket />} />
       </Routes>
     </HashRouter>
   );

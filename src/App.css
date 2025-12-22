@@ -108,3 +108,97 @@ h4 {
   padding: 0 18px 10px;
   font-size: 14px;
 }
+
+/* ===== Marketplace page (brand-consistent with AssetPairs) ===== */
+
+.market-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.market-card {
+  border: 1px solid rgba(0,0,0,0.12);
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.market-imgwrap {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  background: #f3f4f6;
+}
+
+.market-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;   /* shows whole image */
+  object-position: center;
+  display: block;
+  background: #f3f4f6;   /* letterbox background */
+}
+
+
+.market-badge {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(0,0,0,0.65);
+  color: white;
+  font-size: 12px;
+}
+
+.market-body {
+  padding: 14px;
+  color: #111827;
+}
+
+.market-price {
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.market-title {
+  margin-top: 6px;
+  font-weight: 700;
+}
+
+.market-meta {
+  margin-top: 6px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  opacity: 0.8;
+  font-size: 13px;
+}
+
+.market-desc {
+  margin-top: 10px;
+  font-size: 14px;
+  line-height: 1.35;
+  opacity: 0.9;
+}
+
+.market-actions {
+  margin-top: 12px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* Uses existing .wallet-btn styles (from your header styling) */
+
+.market-fb {
+  margin-top: 10px;
+}
+
+.market-footnote {
+  margin-top: 10px;
+  font-size: 12px;
+  opacity: 0.7;
+}
