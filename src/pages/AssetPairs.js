@@ -105,7 +105,7 @@ export default function AssetPairs() {
                 }}
               >
                 {assigned.length === 0 ? (
-                  <div style={{ opacity: 0.75 }}>No NFTs currently assigned to this asset.</div>
+                  <div style={{ opacity: 0.75 }}>No NFTs currently assigned to this item.</div>
                 ) : (
                   assigned.map((nft) => (
                     <div
@@ -125,7 +125,7 @@ export default function AssetPairs() {
                       <div style={{ padding: 12 }}>
                         <div style={{ fontWeight: 700 }}>{nft.tokenId}</div>
                         <div style={{ opacity: 0.8, marginTop: 6 }}>
-                          Currently paired to asset: <strong>{assignment[nft.tokenId]}</strong>
+                          Currently paired to item: <strong>{assignment[nft.tokenId]}</strong>
                         </div>
 
                         {/* migrate one token */}
