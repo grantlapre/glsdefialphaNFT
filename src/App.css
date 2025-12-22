@@ -44,3 +44,67 @@ h4 {
 .header {
   text-align: center;
 }
+
+/* ===== Wallet header styling (matches existing CRA theme) ===== */
+
+.navbar {
+  background-color: #282c34; /* matches .App-header */
+  padding: 12px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  color: white;
+}
+
+.navbar-title {
+  margin: 0;
+  font-size: 22px;
+  color: white;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.wallet-pill {
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(0, 0, 0, 0.15);
+  color: white;
+  font-size: 14px;
+}
+
+.wallet-btn {
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: rgba(97, 218, 251, 0.18); /* matches .App-link hue */
+  color: white;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.wallet-btn:hover {
+  filter: brightness(1.1);
+}
+
+.wallet-btn.secondary {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.wallet-note {
+  opacity: 0.85;
+  font-size: 14px;
+}
+
+.wallet-error {
+  color: #ffb3b3;
+  padding: 0 18px 10px;
+  font-size: 14px;
+}
