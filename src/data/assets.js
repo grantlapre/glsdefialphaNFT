@@ -1,5 +1,6 @@
 
 import item0001 from "../assets/nfts/asset0001/item0001.png";
+import item0002 from "../assets/nfts/asset0002/item0002.jpg";
 export const ASSETS = [
     {
         code: "0001",
@@ -18,18 +19,18 @@ export const ASSETS = [
       },
     
       {
-        code: "00A7",
-        name: "GLS Alpha Item 00A7",
-        valueUsd: 10000,
-        totalNfts: 60,
+        code: "0002",
+        name: "GLS Alpha Item 0002",
+        valueUsd: 4320,
+        totalNfts: 23,
         status: "active",
     
         // Marketplace / sales page fields
         forSale: true,
-        location: "Perth, WA",
-        condition: "Used - Like New",
-        itemImage: "/nfts/asset0001/item0001.png", // OR import if you keep in src/assets
-        shortDesc:
+        location: "Mount Morgan, QLD",
+        condition: "Used - 1993 Millard Caravan, tows well, reg'd",
+        itemImage: item0002,
+        shortDesc: 
           "This item is available for outright purchase via GLSDefi. Settlement is handled in a single transaction.",
       },
     
