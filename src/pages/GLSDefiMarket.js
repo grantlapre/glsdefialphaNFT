@@ -7,7 +7,7 @@ const money = (n) =>
   n.toLocaleString(undefined, { style: "currency", currency: "USD" });
 
 // Preferred GLSDefi contact method
-const GLSDEFI_CONTACT_EMAIL = "info@glsdefi.com"; // update if needed
+const GLSDEFI_CONTACT_EMAIL = "glsdefi@glsdefi.com"; // update if needed
 
 export default function GLSDefiMarket() {
   const itemsForSale = ASSETS.filter((a) => a.forSale);
