@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/glsdefialphaNFT/static/css/main.1351f23f.css",
-    "main.js": "/glsdefialphaNFT/static/js/main.98f7574c.js",
+    "main.css": "/glsdefialphaNFT/static/css/main.51ff492f.css",
+    "main.js": "/glsdefialphaNFT/static/js/main.2b970326.js",
     "static/js/978.c210bce3.chunk.js": "/glsdefialphaNFT/static/js/978.c210bce3.chunk.js",
     "static/js/800.08b7a168.chunk.js": "/glsdefialphaNFT/static/js/800.08b7a168.chunk.js",
     "static/js/510.d79261dd.chunk.js": "/glsdefialphaNFT/static/js/510.d79261dd.chunk.js",
@@ -19,8 +19,11 @@
     "static/js/497.10b8f7d9.chunk.js": "/glsdefialphaNFT/static/js/497.10b8f7d9.chunk.js",
     "static/js/601.95318d06.chunk.js": "/glsdefialphaNFT/static/js/601.95318d06.chunk.js",
     "static/js/798.56c3a6e1.chunk.js": "/glsdefialphaNFT/static/js/798.56c3a6e1.chunk.js",
-    "static/media/item0002.jpg": "/glsdefialphaNFT/static/media/item0002.edd0d891034057b00a81.jpg",
-    "static/media/item0001.png": "/glsdefialphaNFT/static/media/item0001.40c9cecc080497aec4ec.png",
+    "static/media/a2photo2.jpg": "/glsdefialphaNFT/static/media/a2photo2.130067f39bb94a6e036e.jpg",
+    "static/media/a2photo3.jpg": "/glsdefialphaNFT/static/media/a2photo3.cb719311228508031170.jpg",
+    "static/media/a3photo1.jpg": "/glsdefialphaNFT/static/media/a3photo1.53711a8c64c1c5ea8994.jpg",
+    "static/media/a2photo1.jpg": "/glsdefialphaNFT/static/media/a2photo1.edd0d891034057b00a81.jpg",
+    "static/media/a1photo1.png": "/glsdefialphaNFT/static/media/a1photo1.40c9cecc080497aec4ec.png",
     "static/media/image11.png": "/glsdefialphaNFT/static/media/image11.bdb98a34c815c7e3e411.png",
     "static/media/image3.png": "/glsdefialphaNFT/static/media/image3.79fb5c270fb144df48ba.png",
     "static/media/image13.png": "/glsdefialphaNFT/static/media/image13.0612c48342f5999b90f8.png",
@@ -34,13 +37,15 @@
     "static/media/image2.png": "/glsdefialphaNFT/static/media/image2.6e4696ee3fd56f35850a.png",
     "static/media/nft03.png": "/glsdefialphaNFT/static/media/nft03.7179f600a134fd2836fb.png",
     "static/media/nft02.png": "/glsdefialphaNFT/static/media/nft02.0f8b8ddf8a78a2cc668e.png",
+    "static/media/a1photo2.jpg": "/glsdefialphaNFT/static/media/a1photo2.43384b5e671d7f6fee91.jpg",
     "static/media/nft01.png": "/glsdefialphaNFT/static/media/nft01.89bb6c4a4964bb109cd9.png",
     "static/media/nft00.png": "/glsdefialphaNFT/static/media/nft00.ef3fde0b40ab1673e7e4.png",
+    "static/media/a1photo3.jpg": "/glsdefialphaNFT/static/media/a1photo3.e0b19ddbc96fd3c9281c.jpg",
     "static/media/logo.svg": "/glsdefialphaNFT/static/media/logo.cb492cb7111abc409b15266dd27df5ce.svg",
     "index.html": "/glsdefialphaNFT/index.html"
   },
   "entrypoints": [
-    "static/css/main.1351f23f.css",
-    "static/js/main.98f7574c.js"
+    "static/css/main.51ff492f.css",
+    "static/js/main.2b970326.js"
   ]
 }
