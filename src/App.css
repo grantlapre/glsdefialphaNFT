@@ -202,3 +202,46 @@ h4 {
   font-size: 12px;
   opacity: 0.7;
 }
+/* Marketplace image gallery controls */
+.market-gallery-controls {
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.market-gallery-btn {
+  border: 1px solid rgba(255,255,255,0.6);
+  background: rgba(0,0,0,0.55);
+  color: #fff;
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 22px;
+  line-height: 30px;
+}
+
+.market-gallery-dots {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  flex: 1;
+}
+
+.market-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.8);
+  background: rgba(255,255,255,0.35);
+  cursor: pointer;
+}
+
+.market-dot.active {
+  background: rgba(255,255,255,0.95);
+}

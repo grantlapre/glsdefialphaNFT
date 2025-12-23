@@ -64,43 +64,54 @@ export default function AssetPairs() {
               }}
             >
       {/* ASSET HEADER */}
-      <div
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  gap: 16,
-                  flexWrap: "wrap",
-                }}
-              >
-                <div>
-                  <h2 style={{ marginBottom: 6 }}>{asset.name}</h2>
-                  <div>
-                    <strong>Asset Code:</strong> {asset.code}
-                  </div>
-                  <div>
-                    <strong>Status:</strong> {asset.status}
-                  </div>
+<div
+  style={{
+    display: "flex",
+    justifyContent: "space-between",
+    gap: 16,
+    flexWrap: "wrap",
+  }}
+>
+  {/* LEFT COLUMN */}
+  <div>
+    <h2 style={{ marginBottom: 6 }}>{asset.name}</h2>
+    <div>
+      <strong>Asset Code:</strong> {asset.code}
+    </div>
+    <div>
+      <strong>Status:</strong> {asset.status}
+    </div>
+  </div>
 
+  {/* RIGHT COLUMN */}
+  <div>
+    {asset.hiddenValue ? (
+      <div>
+        <strong>Asset Value:</strong>{" "}
+        <span style={{ fontStyle: "italic", opacity: 0.8 }}>
+          To be auctioned
+        </span>
+      </div>
+    ) : (
+      <>
+        <div>
+          <strong>Asset Value:</strong> {money(asset.valueUsd)}
+        </div>
+        <div>
+          <strong>Per NFT (ref):</strong> {money(perNft)}
+        </div>
+      </>
+    )}
 
-                </div>
+    <div>
+      <strong>Capped Paired NFTs:</strong> {asset.cappedSupply}
+    </div>
+    <div>
+      <strong>NFTs Shown:</strong> {assigned.length}
+    </div>
+  </div>
+</div>
 
-                <div style={{ textAlign: "right" }}>
-                  <div>
-                    <strong>Asset Value:</strong> {money(asset.valueUsd)}
-                  </div>
-                  <div>
-                    <strong>Total NFTs:</strong> {asset.totalNfts}
-                  </div>
-                  <div>
-                    <strong>Per NFT (ref):</strong> {money(perNft)}
-                  </div>
-                  <div>
-                    <strong>NFTs Shown:</strong> {assigned.length}
-                  </div>
-                </div>
-              </div>
-
-              
 
               {/* MIGRATION CONTROLS */}
               <div style={{ marginTop: 12, display: "flex", gap: 10, flexWrap: "wrap", alignItems: "center" }}>
