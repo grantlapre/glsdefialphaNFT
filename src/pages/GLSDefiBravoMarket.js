@@ -1,23 +1,19 @@
+// src/pages/GLSDefiBravoMarket.js
 import React, { useState } from "react";
 import Container from "react-bootstrap/Container";
 import { Link } from "react-router-dom";
-import { ASSETS } from "../data/assets";
-import { ASSETS_BRAVO } from "../data/assets.bravo";
-import PayWithGLSD from "../components/PayWithGLSD";
 
+import { ASSETS_BRAVO } from "../data/assets.bravo";
 
 const money = (n) =>
   n.toLocaleString(undefined, { style: "currency", currency: "USD" });
 
-// Preferred GLSDefi contact method
 const GLSDEFI_CONTACT_EMAIL = "glsdefi@glsdefi.com"; // update if needed
 
-export default function GLSDefiMarket() {
-  const itemsForSale = ASSETS.filter((a) => a.forSale);
+export default function GLSDefiBravoMarket() {
+  const itemsForSale = ASSETS_BRAVO.filter((a) => a.forSale);
 
-  // ✅ Hooks MUST be inside the component
   const [photoIndex, setPhotoIndex] = useState({});
-
   const setIdx = (code, idx) =>
     setPhotoIndex((prev) => ({ ...prev, [code]: idx }));
 
@@ -34,27 +30,20 @@ export default function GLSDefiMarket() {
           }}
         >
           <div>
-            <h1 style={{ marginBottom: 6 }}>Items for Sale</h1>
+            <h1 style={{ marginBottom: 6 }}>GLSDefi Bravo — Items for Sale</h1>
             <div style={{ opacity: 0.85, maxWidth: 820 }}>
-              Items listed here are available for <strong>outright purchase</strong> via GLSDefi.
-              To proceed, contact GLSDefi and reference the relevant{" "}
+              Items listed here are available for <strong>outright purchase</strong>{" "}
+              via GLSDefi. To proceed, contact GLSDefi and reference the relevant{" "}
               <strong>Asset Code</strong>.
             </div>
           </div>
 
           <div style={{ alignSelf: "flex-end" }}>
-            <Link to="/asset-pairs" className="App-link">
-              View Asset ↔ NFT Pairing
+            <Link to="/bravo/asset-pairs" className="App-link">
+              View Asset ↔ NFT Pairing (Bravo)
             </Link>
           </div>
         </div>
- 
-
-        
-{/* GLSD LISTING FEE PAYMENT */}
-<div style={{ marginTop: 24, marginBottom: 32 }}>
-  <PayWithGLSD />
-</div>
 
         {/* GRID */}
         <div className="market-grid">
@@ -139,7 +128,7 @@ export default function GLSDefiMarket() {
                   <div className="market-actions">
                     <a
                       className="wallet-btn"
-                      href={`mailto:${GLSDEFI_CONTACT_EMAIL}?subject=Outright%20Purchase%20-%20Asset%20${item.code}&body=Hi%20GLSDefi%2C%0A%0AI%20would%20like%20to%20purchase%20Asset%20${item.code}%20outright.%0A%0APlease%20advise%20next%20steps%20for%20settlement.%0A`}
+                      href={`mailto:${GLSDEFI_CONTACT_EMAIL}?subject=Outright%20Purchase%20-%20Bravo%20Asset%20${item.code}&body=Hi%20GLSDefi%2C%0A%0AI%20would%20like%20to%20purchase%20Bravo%20Asset%20${item.code}%20outright.%0A%0APlease%20advise%20next%20steps%20for%20settlement.%0A`}
                     >
                       Contact GLSDefi to Buy Outright
                     </a>

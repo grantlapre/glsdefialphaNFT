@@ -8,6 +8,7 @@ import a1photo3 from "../assets/nfts/asset0001/a1photo3.jpg";
 import a2photo2 from "../assets/nfts/asset0002/a2photo2.jpg";
 import a2photo3 from "../assets/nfts/asset0002/a2photo3.jpg";
 
+
 export const ASSETS = [
     {
         code: "0001",
