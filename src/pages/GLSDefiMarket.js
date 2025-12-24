@@ -2,9 +2,7 @@ import React, { useState } from "react";
 import Container from "react-bootstrap/Container";
 import { Link } from "react-router-dom";
 import { ASSETS } from "../data/assets";
-import { ASSETS_BRAVO } from "../data/assets.bravo";
 import PayWithGLSD from "../components/PayWithGLSD";
-
 
 const money = (n) =>
   n.toLocaleString(undefined, { style: "currency", currency: "USD" });
@@ -24,6 +22,29 @@ export default function GLSDefiMarket() {
   return (
     <div className="App">
       <Container style={{ paddingTop: 24, paddingBottom: 40 }}>
+        {/* NAVIGATION */}
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            gap: 20,
+            marginBottom: 26,
+            flexWrap: "wrap",
+          }}
+        >
+          <Link to="/" className="App-link">
+            Home
+          </Link>
+
+          <span style={{ fontWeight: 700, opacity: 0.8 }}>
+            Marketplace
+          </span>
+
+          <Link to="/alpha/asset-pairs" className="App-link">
+            Asset ↔ NFT Pairing
+          </Link>
+        </div>
+
         {/* HEADER */}
         <div
           style={{
@@ -36,25 +57,23 @@ export default function GLSDefiMarket() {
           <div>
             <h1 style={{ marginBottom: 6 }}>Items for Sale</h1>
             <div style={{ opacity: 0.85, maxWidth: 820 }}>
-              Items listed here are available for <strong>outright purchase</strong> via GLSDefi.
-              To proceed, contact GLSDefi and reference the relevant{" "}
+              Items listed here are available for <strong>outright purchase</strong>{" "}
+              via GLSDefi. To proceed, contact GLSDefi and reference the relevant{" "}
               <strong>Asset Code</strong>.
             </div>
           </div>
 
           <div style={{ alignSelf: "flex-end" }}>
-            <Link to="/asset-pairs" className="App-link">
+            <Link to="/alpha/asset-pairs" className="App-link">
               View Asset ↔ NFT Pairing
             </Link>
           </div>
         </div>
- 
 
-        
-{/* GLSD LISTING FEE PAYMENT */}
-<div style={{ marginTop: 24, marginBottom: 32 }}>
-  <PayWithGLSD />
-</div>
+        {/* GLSD LISTING FEE PAYMENT */}
+        <div style={{ marginTop: 24, marginBottom: 32 }}>
+          <PayWithGLSD />
+        </div>
 
         {/* GRID */}
         <div className="market-grid">
@@ -82,7 +101,10 @@ export default function GLSDefiMarket() {
                         type="button"
                         className="market-gallery-btn"
                         onClick={() =>
-                          setIdx(item.code, (safeIdx - 1 + imgs.length) % imgs.length)
+                          setIdx(
+                            item.code,
+                            (safeIdx - 1 + imgs.length) % imgs.length
+                          )
                         }
                         aria-label="Previous photo"
                       >
@@ -94,7 +116,9 @@ export default function GLSDefiMarket() {
                           <button
                             key={i}
                             type="button"
-                            className={`market-dot ${i === safeIdx ? "active" : ""}`}
+                            className={`market-dot ${
+                              i === safeIdx ? "active" : ""
+                            }`}
                             onClick={() => setIdx(item.code, i)}
                             aria-label={`Photo ${i + 1}`}
                           />

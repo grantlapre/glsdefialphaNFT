@@ -100,9 +100,7 @@ export default function Header() {
             <button className="wallet-btn" onClick={connect} type="button">
               Connect Wallet
             </button>
-            <Link to="/marketplace" className="App-link">
-              Market
-            </Link>
+
           </div>
           )}
         </div>

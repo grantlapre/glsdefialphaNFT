@@ -1,6 +1,7 @@
 // src/pages/BravoAssetPairs.js
 import React, { useMemo, useState } from "react";
 import Container from "react-bootstrap/Container";
+import { Link } from "react-router-dom";
 
 import { ASSETS_BRAVO } from "../data/assets.bravo";
 import { NFTS_BRAVO, INITIAL_ASSIGNMENT_BRAVO } from "../data/nfts.bravo";
@@ -38,6 +39,29 @@ export default function BravoAssetPairs() {
   return (
     <div className="App">
       <Container style={{ paddingTop: 24, paddingBottom: 30 }}>
+        {/* NAVIGATION */}
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            gap: 20,
+            marginBottom: 26,
+            flexWrap: "wrap",
+          }}
+        >
+          <Link to="/" className="App-link">
+            Home
+          </Link>
+
+          <Link to="/bravo/marketplace" className="App-link">
+            Bravo Marketplace
+          </Link>
+
+          <span style={{ fontWeight: 700, opacity: 0.8 }}>
+            Bravo Asset ↔ NFT Pairing
+          </span>
+        </div>
+
         <h1>GLSDefi Bravo — Items ↔ NFT Pairing</h1>
         <p style={{ opacity: 0.85 }}>
           NFT owners who opt to hold can be reassigned to a different item when an
@@ -161,7 +185,9 @@ export default function BravoAssetPairs() {
                       <img
                         src={nft.previewImage}
                         alt={nft.name}
-                        onError={() => console.log("Image failed to load:", nft.previewImage)}
+                        onError={() =>
+                          console.log("Image failed to load:", nft.previewImage)
+                        }
                         style={{
                           width: "100%",
                           height: 220,

@@ -245,3 +245,24 @@ h4 {
 .market-dot.active {
   background: rgba(255,255,255,0.95);
 }
+
+/* ===== Project page layout ===== */
+.project-info {
+  background: #ffffff;
+  color: #111;
+  padding: 26px 0;
+  text-align: center;
+}
+
+.project-mint {
+  background: #0f1115;
+  color: #fff;
+  padding: 28px 0 50px;
+  text-align: center;
+}
+
+.mint-center {
+  display: flex;
+  justify-content: center;
+  margin-top: 18px;
+}

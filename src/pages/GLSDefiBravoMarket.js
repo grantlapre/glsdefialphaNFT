@@ -20,6 +20,29 @@ export default function GLSDefiBravoMarket() {
   return (
     <div className="App">
       <Container style={{ paddingTop: 24, paddingBottom: 40 }}>
+        {/* NAVIGATION */}
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            gap: 20,
+            marginBottom: 26,
+            flexWrap: "wrap",
+          }}
+        >
+          <Link to="/" className="App-link">
+            Home
+          </Link>
+
+          <span style={{ fontWeight: 700, opacity: 0.8 }}>
+            Bravo Marketplace
+          </span>
+
+          <Link to="/bravo/asset-pairs" className="App-link">
+            Bravo Asset ↔ NFT Pairing
+          </Link>
+        </div>
+
         {/* HEADER */}
         <div
           style={{
@@ -71,7 +94,10 @@ export default function GLSDefiBravoMarket() {
                         type="button"
                         className="market-gallery-btn"
                         onClick={() =>
-                          setIdx(item.code, (safeIdx - 1 + imgs.length) % imgs.length)
+                          setIdx(
+                            item.code,
+                            (safeIdx - 1 + imgs.length) % imgs.length
+                          )
                         }
                         aria-label="Previous photo"
                       >
@@ -83,7 +109,9 @@ export default function GLSDefiBravoMarket() {
                           <button
                             key={i}
                             type="button"
-                            className={`market-dot ${i === safeIdx ? "active" : ""}`}
+                            className={`market-dot ${
+                              i === safeIdx ? "active" : ""
+                            }`}
                             onClick={() => setIdx(item.code, i)}
                             aria-label={`Photo ${i + 1}`}
                           />
