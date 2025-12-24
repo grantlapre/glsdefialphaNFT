@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/glsdefialphaNFT/static/css/main.51ff492f.css",
-    "main.js": "/glsdefialphaNFT/static/js/main.b36ca109.js",
+    "main.css": "/glsdefialphaNFT/static/css/main.adbaf157.css",
+    "main.js": "/glsdefialphaNFT/static/js/main.575d32f4.js",
     "static/js/978.c210bce3.chunk.js": "/glsdefialphaNFT/static/js/978.c210bce3.chunk.js",
     "static/js/800.08b7a168.chunk.js": "/glsdefialphaNFT/static/js/800.08b7a168.chunk.js",
     "static/js/510.d79261dd.chunk.js": "/glsdefialphaNFT/static/js/510.d79261dd.chunk.js",
@@ -26,18 +26,20 @@
     "static/media/a1photo1.png": "/glsdefialphaNFT/static/media/a1photo1.40c9cecc080497aec4ec.png",
     "static/media/bnft02.jpg": "/glsdefialphaNFT/static/media/bnft02.640abafa743eaf05e74e.jpg",
     "static/media/b1photo1.jpeg": "/glsdefialphaNFT/static/media/b1photo1.79b5b855f3c3c80528ce.jpeg",
-    "static/media/image11.png": "/glsdefialphaNFT/static/media/image11.bdb98a34c815c7e3e411.png",
-    "static/media/b1photo2.jpeg": "/glsdefialphaNFT/static/media/b1photo2.b59916cf89b9d5172e9c.jpeg",
-    "static/media/image3.png": "/glsdefialphaNFT/static/media/image3.79fb5c270fb144df48ba.png",
-    "static/media/image13.png": "/glsdefialphaNFT/static/media/image13.0612c48342f5999b90f8.png",
     "static/media/image9.png": "/glsdefialphaNFT/static/media/image9.3dabff52076cf3beef47.png",
-    "static/media/image1.png": "/glsdefialphaNFT/static/media/image1.698ae8c191b1ab75a18c.png",
-    "static/media/image10.png": "/glsdefialphaNFT/static/media/image10.03e74e1a8212e157e8c1.png",
-    "static/media/image5.png": "/glsdefialphaNFT/static/media/image5.bb54c1475b842b4c1a39.png",
-    "static/media/image7.png": "/glsdefialphaNFT/static/media/image7.c1215f1f893caee642df.png",
-    "static/media/image12.png": "/glsdefialphaNFT/static/media/image12.07541056cda77121c764.png",
+    "static/media/image11.png": "/glsdefialphaNFT/static/media/image11.cfd8fb16c238d7e21851.png",
     "static/media/image6.png": "/glsdefialphaNFT/static/media/image6.46a52c3ab1d2906d8b80.png",
-    "static/media/image2.png": "/glsdefialphaNFT/static/media/image2.6e4696ee3fd56f35850a.png",
+    "static/media/b1photo2.jpeg": "/glsdefialphaNFT/static/media/b1photo2.b59916cf89b9d5172e9c.jpeg",
+    "static/media/image3.png": "/glsdefialphaNFT/static/media/image3.c2b9adc4cbcc61e08e1f.png",
+    "static/media/image13.png": "/glsdefialphaNFT/static/media/image13.b05232d954a2a5ec9afe.png",
+    "static/media/image4.png": "/glsdefialphaNFT/static/media/image4.c7c40b8a08d95eb431ec.png",
+    "static/media/image1.png": "/glsdefialphaNFT/static/media/image1.bac1664c9287621e0c44.png",
+    "static/media/image10.png": "/glsdefialphaNFT/static/media/image10.53123f7044bdc1eba998.png",
+    "static/media/image8.png": "/glsdefialphaNFT/static/media/image8.1c03ec3a863eb0e9a1d2.png",
+    "static/media/image5.png": "/glsdefialphaNFT/static/media/image5.6bd833172cfba945054a.png",
+    "static/media/image7.png": "/glsdefialphaNFT/static/media/image7.7ca6502624aaffd70d5c.png",
+    "static/media/image12.png": "/glsdefialphaNFT/static/media/image12.902fce8bb0540de49a74.png",
+    "static/media/image2.png": "/glsdefialphaNFT/static/media/image2.36059acd87179ceaa904.png",
     "static/media/b1photo3.jpeg": "/glsdefialphaNFT/static/media/b1photo3.2738a8667ba7593e7777.jpeg",
     "static/media/nft03.png": "/glsdefialphaNFT/static/media/nft03.7179f600a134fd2836fb.png",
     "static/media/nft02.png": "/glsdefialphaNFT/static/media/nft02.0f8b8ddf8a78a2cc668e.png",
@@ -51,7 +53,7 @@
     "index.html": "/glsdefialphaNFT/index.html"
   },
   "entrypoints": [
-    "static/css/main.51ff492f.css",
-    "static/js/main.b36ca109.js"
+    "static/css/main.adbaf157.css",
+    "static/js/main.575d32f4.js"
   ]
 }
