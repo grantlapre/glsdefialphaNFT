@@ -1,99 +1,80 @@
 import React, { useState } from "react";
 import Container from "react-bootstrap/Container";
-import { Link } from "react-router-dom";
 import { ASSETS } from "../data/assets";
-import PayWithGLSD from "../components/PayWithGLSD";
+import "./GLSDefiMarket.css";
 
-const money = (n) =>
-  n.toLocaleString(undefined, { style: "currency", currency: "USD" });
-
-// Preferred GLSDefi contact method
-const GLSDEFI_CONTACT_EMAIL = "glsdefi@glsdefi.com"; // update if needed
+const GLSDEFI_CONTACT_EMAIL = "support@glsdefi.com"; // change if needed
 
 export default function GLSDefiMarket() {
   const itemsForSale = ASSETS.filter((a) => a.forSale);
 
-  // ✅ Hooks MUST be inside the component
+  // Push SOLD items to the bottom of the grid
+  const sortedItems = [...itemsForSale].sort((a, b) => {
+    const aSold = a.status === "SOLD" ? 1 : 0;
+    const bSold = b.status === "SOLD" ? 1 : 0;
+    return aSold - bSold;
+  });
+
+  const formatSoldDate = (raw) => {
+    if (!raw) return "";
+    const d = new Date(raw);
+    if (!Number.isNaN(d.getTime())) {
+      return d.toLocaleDateString(undefined, {
+        year: "numeric",
+        month: "short",
+        day: "2-digit",
+      });
+    }
+    return String(raw);
+  };
+
   const [photoIndex, setPhotoIndex] = useState({});
 
-  const setIdx = (code, idx) =>
-    setPhotoIndex((prev) => ({ ...prev, [code]: idx }));
+  const setIdx = (code, next) =>
+    setPhotoIndex((prev) => ({ ...prev, [code]: next }));
 
   return (
-    <div className="App">
-      <Container style={{ paddingTop: 24, paddingBottom: 40 }}>
-        {/* NAVIGATION */}
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            gap: 20,
-            marginBottom: 26,
-            flexWrap: "wrap",
-          }}
-        >
-          <Link to="/" className="App-link">
-            Home
-          </Link>
+    <div className="market-page">
+      <Container>
+        <h2 className="market-title">Items for Sale</h2>
 
-          <span style={{ fontWeight: 700, opacity: 0.8 }}>
-            Marketplace
-          </span>
-
-          <Link to="/alpha/asset-pairs" className="App-link">
-            Asset ↔ NFT Pairing
-          </Link>
-        </div>
-
-        {/* HEADER */}
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            gap: 12,
-            flexWrap: "wrap",
-          }}
-        >
-          <div>
-            <h1 style={{ marginBottom: 6 }}>Items for Sale</h1>
-            <div style={{ opacity: 0.85, maxWidth: 820 }}>
-              Items listed here are available for <strong>outright purchase</strong>{" "}
-              via GLSDefi. To proceed, contact GLSDefi and reference the relevant{" "}
-              <strong>Asset Code</strong>.
-            </div>
-          </div>
-
-          <div style={{ alignSelf: "flex-end" }}>
-            <Link to="/alpha/asset-pairs" className="App-link">
-              View Asset ↔ NFT Pairing
-            </Link>
-          </div>
-        </div>
-
-        {/* GLSD LISTING FEE PAYMENT */}
-        <div style={{ marginTop: 24, marginBottom: 32 }}>
-          <PayWithGLSD />
-        </div>
-
-        {/* GRID */}
         <div className="market-grid">
-          {itemsForSale.map((item) => {
-            const imgs =
-              item.images && item.images.length
-                ? item.images
-                : [item.itemImage].filter(Boolean);
-
+          {sortedItems.map((item) => {
+            const imgs = item.images?.length ? item.images : [item.image];
             const idx = photoIndex[item.code] ?? 0;
             const safeIdx = Math.max(0, Math.min(idx, imgs.length - 1));
 
+            const soldRaw =
+              item.soldDate ||
+              item.sold_on ||
+              item.soldAt ||
+              item.sold_at ||
+              item.dateSold;
+
+            const soldText = soldRaw ? formatSoldDate(soldRaw) : "";
+
             return (
               <div key={item.code} className="market-card">
-                <div className="market-imgwrap">
+                <div
+                  className={`market-imgwrap ${
+                    item.status === "SOLD" ? "sold" : ""
+                  }`}
+                >
                   <img
                     src={imgs[safeIdx]}
                     alt={`${item.name} photo ${safeIdx + 1}`}
                     className="market-img"
                   />
+
+                  {/* SOLD overlay */}
+                  {item.status === "SOLD" && (
+                    <div className="sold-stamp">
+                      <div className="sold-stamp-text">SOLD</div>
+                      {soldText && (
+                        <div className="sold-stamp-date">{soldText}</div>
+                      )}
+                    </div>
+                  )}
 
                   {imgs.length > 1 && (
                     <div className="market-gallery-controls">
@@ -113,14 +94,9 @@ export default function GLSDefiMarket() {
 
                       <div className="market-gallery-dots">
                         {imgs.map((_, i) => (
-                          <button
+                          <span
                             key={i}
-                            type="button"
-                            className={`market-dot ${
-                              i === safeIdx ? "active" : ""
-                            }`}
-                            onClick={() => setIdx(item.code, i)}
-                            aria-label={`Photo ${i + 1}`}
+                            className={`dot ${i === safeIdx ? "active" : ""}`}
                           />
                         ))}
                       </div>
@@ -128,49 +104,63 @@ export default function GLSDefiMarket() {
                       <button
                         type="button"
                         className="market-gallery-btn"
-                        onClick={() => setIdx(item.code, (safeIdx + 1) % imgs.length)}
+                        onClick={() =>
+                          setIdx(item.code, (safeIdx + 1) % imgs.length)
+                        }
                         aria-label="Next photo"
                       >
                         ›
                       </button>
                     </div>
                   )}
-
-                  <div className="market-badge">Asset Code: {item.code}</div>
                 </div>
 
                 <div className="market-body">
-                  <div className="market-price">
-                    {item.hiddenValue ? (
-                      <span style={{ fontStyle: "italic", opacity: 0.85 }}>
-                        To be auctioned
-                      </span>
-                    ) : (
-                      money(item.valueUsd)
-                    )}
+                  <div className="market-head">
+                    <div className="market-name">{item.name}</div>
+                    <div
+                      className={`market-status ${
+                        item.status === "SOLD" ? "sold" : "available"
+                      }`}
+                    >
+                      {item.status}
+                    </div>
                   </div>
 
-                  <div className="market-title">{item.name}</div>
-
                   <div className="market-meta">
-                    <span>{item.condition}</span>
+                    <span>{item.code}</span>
                     <span>•</span>
                     <span>{item.location}</span>
                   </div>
 
                   <div className="market-desc">{item.shortDesc}</div>
 
+                  {/* ACTIONS */}
                   <div className="market-actions">
-                    <a
-                      className="wallet-btn"
-                      href={`mailto:${GLSDEFI_CONTACT_EMAIL}?subject=Outright%20Purchase%20-%20Asset%20${item.code}&body=Hi%20GLSDefi%2C%0A%0AI%20would%20like%20to%20purchase%20Asset%20${item.code}%20outright.%0A%0APlease%20advise%20next%20steps%20for%20settlement.%0A`}
-                    >
-                      Contact GLSDefi to Buy Outright
-                    </a>
+                    {item.status === "SOLD" ? (
+                      <div className="market-sold-wrap">
+                        <div className="market-sold-msg">
+                          This item has been sold
+                          {soldText ? <> • {soldText}</> : null}
+                        </div>
+
+                        {/* Disabled "button" (anchor cannot truly be disabled) */}
+                        <span className="market-email disabled" aria-disabled="true">
+  Contact GLSDefi to Buy Outright
+</span>
+                      </div>
+                    ) : (
+<a className="market-email" href={`mailto:${GLSDEFI_CONTACT_EMAIL}?...`}>
+  Contact GLSDefi to Buy Outright
+</a>
+
+                    )}
                   </div>
 
                   <div className="market-footnote">
-                    Settlement is handled directly by GLSDefi in a single transaction.
+                    {item.status === "SOLD"
+                      ? "This listing is marked as SOLD. Contact GLSDefi for availability updates."
+                      : "Settlement is handled directly by GLSDefi in a single transaction."}
                   </div>
                 </div>
               </div>

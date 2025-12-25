@@ -17,7 +17,7 @@ export const ASSETS = [
         hiddenValue: false,
         totalNfts: 15,
         cappedSupply: 11,
-        status: "active",
+        status: "SOLD",
     
         // Marketplace / sales page fields
         forSale: true,

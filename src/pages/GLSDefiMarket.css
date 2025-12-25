@@ -1,0 +1,59 @@
+/* SOLD image overlay */
+.market-imgwrap {
+  position: relative;
+}
+
+/* Dim image when sold */
+.market-imgwrap.sold .market-img {
+  filter: grayscale(70%) brightness(0.85);
+}
+
+/* SOLD stamp */
+.sold-stamp {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 2px solid #0b3d91;
+  background: rgba(255, 255, 255, 0.95);
+  color: #0b3d91;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
+  pointer-events: none;
+  z-index: 5;
+}
+
+.sold-stamp-text {
+  font-size: 0.95rem;
+}
+
+.sold-stamp-date {
+  font-size: 0.75rem;
+  font-weight: 700;
+  opacity: 0.9;
+  margin-top: 2px;
+}
+
+/* Sold message + disable action */
+.market-sold-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.market-sold-msg {
+  font-weight: 700;
+  color: #0b3d91;
+  background: #e9f0ff;
+  padding: 8px 10px;
+  border-radius: 10px;
+}
+
+.wallet-btn-disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  pointer-events: none;
+}

@@ -44,6 +44,9 @@ function App() {
   <Route path="/bravo/asset-pairs" element={<BravoAssetPairs />} />
   <Route path="/bravo/marketplace" element={<GLSDefiBravoMarket />} />
 
+  <Route path="/disclaimer" element={<Disclaimer />} />
+
+
   {/* Fallback */}
   <Route
     path="*"

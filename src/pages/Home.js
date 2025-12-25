@@ -111,9 +111,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div style={{ marginTop: 26, opacity: 0.75, fontSize: 13 }}>
-            Bushido · Integrity · Trust
-          </div>
+          
         </Container>
       </section>
     </div>

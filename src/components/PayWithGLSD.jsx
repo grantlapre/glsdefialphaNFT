@@ -1,5 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { ethers } from "ethers";
+import { Link } from "react-router-dom";
+
 
 /* =========================
    CONFIG
@@ -16,6 +18,43 @@ const GLSD_SYMBOL = "GLSD";
 const GLSD_DECIMALS = 18;
 // Optional logo URL (must be https). Leave undefined if not ready.
 const GLSD_IMAGE = undefined;
+
+const tooltipWrap = {
+  position: "relative",
+  display: "inline-flex",
+  alignItems: "center",
+  marginLeft: 8,
+};
+
+const tooltipIcon = {
+  width: 18,
+  height: 18,
+  borderRadius: "50%",
+  border: "1px solid #0b3d91",
+  color: "#0b3d91",
+  fontSize: 12,
+  lineHeight: "16px",
+  textAlign: "center",
+  cursor: "help",
+  userSelect: "none",
+};
+
+const tooltipBoxBase = {
+  position: "absolute",
+  top: 26,
+  right: 0,
+  width: 320,
+  background: "#ffffff",
+  border: "1px solid #0b3d91",
+  borderRadius: 10,
+  padding: 12,
+  boxShadow: "0 6px 18px rgba(0,0,0,0.08)",
+  zIndex: 20,
+  fontSize: "0.85rem",
+  color: "#0b3d91",
+  lineHeight: 1.35,
+};
+
 
 /* =========================
    ABIs
@@ -51,6 +90,9 @@ export default function PayWithGLSD() {
 
   const [status, setStatus] = useState("");
   const [busy, setBusy] = useState(false);
+
+  const [showUtilityTip, setShowUtilityTip] = useState(false);
+
 
   /* =========================
      CONSTANTS
@@ -309,9 +351,49 @@ export default function PayWithGLSD() {
         background: "#fff",
       }}
     >
-      <h3 style={{ marginTop: 0, color: "#0b3d91" }}>
-        Pay Listing Fee with GLSD (5% off)
-      </h3>
+<div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+  <h3 style={{ marginTop: 0, marginBottom: 0, color: "#0b3d91" }}>
+    Pay Listing Fee with GLSD (5% off)
+  </h3>
+
+  <span
+    style={tooltipWrap}
+    onMouseEnter={() => setShowUtilityTip(true)}
+    onMouseLeave={() => setShowUtilityTip(false)}
+    onClick={() => setShowUtilityTip((v) => !v)}
+
+  >
+    <span
+      style={tooltipIcon}
+      aria-label="Token utility information"
+      title="Token utility information"
+    >
+      i
+    </span>
+
+    {showUtilityTip && (
+      <div style={tooltipBoxBase}>
+        <strong>GLSD Utility</strong>
+        <div style={{ marginTop: 6 }}>
+          GLSD is a utility token used within the GLSDefi platform for optional
+          fee payments and discounts. It does not represent ownership, equity,
+          profit rights, or an investment. Token values may be volatile and you
+          may lose some or all of the amount paid.
+        </div>
+        <div style={{ marginTop: 8 }}>
+        <Link
+  to="/disclaimer"
+  style={{ color: "#0b3d91", textDecoration: "underline" }}
+>
+  View full disclaimer & risk notes
+</Link>
+
+        </div>
+      </div>
+    )}
+  </span>
+</div>
+
 
       {!address ? (
         <>
