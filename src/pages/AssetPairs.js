@@ -4,10 +4,23 @@ import Container from "react-bootstrap/Container";
 import { ASSETS } from "../data/assets";
 import { NFTS, INITIAL_ASSIGNMENT } from "../data/nfts";
 
+
+const OWNER_ADDRESS = "0x1c62cA762121F15ae516A70cc55e5870e48eFa19".toLowerCase();
+
+
 const money = (n) =>
   n.toLocaleString(undefined, { style: "currency", currency: "USD" });
 
+
+
 export default function AssetPairs() {
+
+    const [account] = useState("0xPUBLIC_VIEWER"); // later replace with wallet
+    const isOwner = account.toLowerCase() === OWNER_ADDRESS;
+
+    const [buybackOffers, setBuybackOffers] = useState({});
+
+      
   const [assignment, setAssignment] = useState(INITIAL_ASSIGNMENT);
 
   const assetByCode = useMemo(() => {
@@ -86,15 +99,38 @@ export default function AssetPairs() {
 
           return (
             <section
+            
+              
               key={asset.code}
               style={{
                 marginBottom: 28,
+                position: "relative",
                 padding: 20,
                 borderRadius: 14,
                 border: "1px solid rgba(0,0,0,0.12)",
                 background: "#fff",
               }}
             >
+
+{asset.status === "SOLD" && (
+                <div
+                  style={{
+                    position: "absolute",
+                    right: 20,
+                    top: 20,
+                    padding: "10px 16px",
+                    border: "2px solid #0b3d91",
+                    background: "#e9f0ff",
+                    color: "#0b3d91",
+                    fontWeight: 800,
+                    borderRadius: 10,
+                    transform: "rotate(8deg)",
+                    zIndex: 2,
+                  }}
+                >
+                  SOLD
+                </div>
+              )}
               {/* ASSET HEADER */}
               <div
                 style={{
@@ -113,6 +149,13 @@ export default function AssetPairs() {
                   <div>
                     <strong>Status:</strong> {asset.status}
                   </div>
+                  {asset.status === "SOLD" && !isOwner && (
+  <div style={{ marginTop: 10, opacity: 0.85 }}>
+    This item has sold.  
+    If you hold a paired support NFT, please watch for a buyback offer from GLSDEFI.
+  </div>
+)}
+
                 </div>
 
                 {/* RIGHT */}
@@ -142,35 +185,42 @@ export default function AssetPairs() {
                   <div>
                     <strong>NFTs Shown:</strong> {assigned.length}
                   </div>
+
+                  {asset.status === "SOLD" && isOwner && (
+  <button
+    className="wallet-btn"
+    onClick={() =>
+      setBuybackOffers((prev) => ({
+        ...prev,
+        [asset.code]: {
+          priceUsd: asset.valueUsd * 0.1, // example
+          status: "OPEN",
+        },
+      }))
+    }
+  >
+    Create Buyback Offer
+  </button>
+)}
+
                 </div>
               </div>
 
               {/* MIGRATE ALL */}
-              <div
-                style={{
-                  marginTop: 14,
-                  display: "flex",
-                  gap: 10,
-                  flexWrap: "wrap",
-                  alignItems: "center",
-                }}
-              >
-                <span style={{ fontWeight: 700 }}>
-                  Migrate all NFTs →
-                </span>
-
-                {ASSETS.filter((a) => a.code !== asset.code).map((target) => (
-                  <button
-                    key={target.code}
-                    className="wallet-btn"
-                    onClick={() =>
-                      migrateAll(asset.code, target.code)
-                    }
-                  >
-                    {target.code}
-                  </button>
-                ))}
-              </div>
+              {isOwner && (
+  <div style={{ marginTop: 14, display: "flex", gap: 10, flexWrap: "wrap" }}>
+    <span style={{ fontWeight: 700 }}>Migrate all NFTs →</span>
+    {ASSETS.filter((a) => a.code !== asset.code).map((target) => (
+      <button
+        key={target.code}
+        className="wallet-btn"
+        onClick={() => migrateAll(asset.code, target.code)}
+      >
+        {target.code}
+      </button>
+    ))}
+  </div>
+)}
 
               {/* NFT GRID */}
               <div
@@ -218,34 +268,51 @@ export default function AssetPairs() {
                             {assignment[nft.tokenId]}
                           </strong>
                         </div>
+                        {asset.status === "SOLD" &&
+  buybackOffers[asset.code]?.status === "OPEN" && (
+    <div
+      style={{
+        marginTop: 10,
+        padding: 10,
+        borderRadius: 8,
+        background: "#e9f0ff",
+        border: "1px solid #0b3d91",
+      }}
+    >
+      <strong>Buyback Offer:</strong>{" "}
+      {money(buybackOffers[asset.code].priceUsd)}
+      <div style={{ marginTop: 6 }}>
+        <button className="wallet-btn secondary">
+          Accept Offer
+        </button>
+      </div>
+    </div>
+)}
 
-                        {/* MOVE SINGLE NFT */}
-                        <div
-                          style={{
-                            marginTop: 10,
-                            display: "flex",
-                            gap: 8,
-                            flexWrap: "wrap",
-                          }}
-                        >
-                          {ASSETS.filter(
-                            (a) =>
-                              a.code !== assignment[nft.tokenId]
-                          ).map((target) => (
-                            <button
-                              key={target.code}
-                              className="wallet-btn secondary"
-                              onClick={() =>
-                                migrateOne(
-                                  nft.tokenId,
-                                  target.code
-                                )
-                              }
-                            >
-                              Move → {target.code}
-                            </button>
-                          ))}
-                        </div>
+                        {/* MOVE SINGLE NFT (OWNER ONLY) */}
+{isOwner && (
+  <div
+    style={{
+      marginTop: 10,
+      display: "flex",
+      gap: 8,
+      flexWrap: "wrap",
+    }}
+  >
+    {ASSETS.filter(
+      (a) => a.code !== assignment[nft.tokenId]
+    ).map((target) => (
+      <button
+        key={target.code}
+        className="wallet-btn secondary"
+        onClick={() => migrateOne(nft.tokenId, target.code)}
+      >
+        Move → {target.code}
+      </button>
+    ))}
+  </div>
+)}
+
                       </div>
                     </div>
                   ))

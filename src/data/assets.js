@@ -20,7 +20,8 @@ export const ASSETS = [
         status: "SOLD",
     
         // Marketplace / sales page fields
-        forSale: true,
+        forSale: false,
+        pairable: false,
         location: "Ampang, Kuala Lumpur, MY",
         condition: "Used - Very Good and Clean Condition, regularly Serviced",
         images: [a1photo1, a1photo2, a1photo3],
@@ -39,6 +40,7 @@ export const ASSETS = [
     
         // Marketplace / sales page fields
         forSale: true,
+        pairable: true,
         location: "Mount Morgan, QLD",
         condition: "Used - 1993 Millard Caravan, tows well, reg'd",
         images: [a2photo1, a2photo2, a2photo3],
@@ -57,6 +59,7 @@ export const ASSETS = [
     
         // Marketplace / sales page fields
         forSale: true,
+        pairable: true,
         location: "Perth, WA",
         condition: "19th Century Art - Joseph Charles Nigote [pair]",
         images: [a3photo1],

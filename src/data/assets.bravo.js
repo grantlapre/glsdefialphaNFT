@@ -13,6 +13,7 @@ export const ASSETS_BRAVO = [
     status: "active",
     hiddenValue: true,
     forSale: true,
+    pairable: true,
     location: "Gukit Gita Bayu, Malaysia",
     condition: "3060 sqft, 2 levels, 5beds, 5bathrooms",
     shortDesc: "This item is available for outright purchase via GLSDefi. Settlement is handled in a single transaction.",
