@@ -2,6 +2,8 @@
 import React, { useState } from "react";
 import Container from "react-bootstrap/Container";
 import { Link } from "react-router-dom";
+import "./GLSDefiMarket.css";
+
 
 import { ASSETS_BRAVO } from "../data/assets.bravo";
 
@@ -11,7 +13,31 @@ const money = (n) =>
 const GLSDEFI_CONTACT_EMAIL = "glsdefi@glsdefi.com"; // update if needed
 
 export default function GLSDefiBravoMarket() {
-  const itemsForSale = ASSETS_BRAVO.filter((a) => a.forSale);
+   // Keep SOLD items visible even if forSale gets turned off
+const itemsForSale = ASSETS_BRAVO.filter((a) => a.forSale || a.status === "SOLD");
+
+// Push SOLD items to the bottom
+const sortedItems = [...itemsForSale].sort((a, b) => {
+  const aSold = a.status === "SOLD" ? 1 : 0;
+  const bSold = b.status === "SOLD" ? 1 : 0;
+  return aSold - bSold;
+});
+
+
+    
+    const formatSoldDate = (raw) => {
+      if (!raw) return "";
+      const d = new Date(raw);
+      if (!Number.isNaN(d.getTime())) {
+        return d.toLocaleDateString(undefined, {
+          year: "numeric",
+          month: "short",
+          day: "2-digit",
+        });
+      }
+      return String(raw);
+    };
+    
 
   const [photoIndex, setPhotoIndex] = useState({});
   const setIdx = (code, idx) =>
@@ -70,7 +96,8 @@ export default function GLSDefiBravoMarket() {
 
         {/* GRID */}
         <div className="market-grid">
-          {itemsForSale.map((item) => {
+          {sortedItems.map((item) => {
+
             const imgs =
               item.images && item.images.length
                 ? item.images
@@ -81,12 +108,33 @@ export default function GLSDefiBravoMarket() {
 
             return (
               <div key={item.code} className="market-card">
-                <div className="market-imgwrap">
+                <div
+  className={`market-imgwrap ${item.status === "SOLD" ? "sold" : ""}`}
+>
+
                   <img
                     src={imgs[safeIdx]}
                     alt={`${item.name} photo ${safeIdx + 1}`}
                     className="market-img"
                   />
+    {/* SOLD overlay */}
+{item.status === "SOLD" && (() => {
+  const soldRaw =
+    item.soldDate ||
+    item.sold_on ||
+    item.soldAt ||
+    item.sold_at ||
+    item.dateSold;
+
+  const soldText = soldRaw ? formatSoldDate(soldRaw) : "";
+
+  return (
+    <div className="sold-stamp">
+      <div className="sold-stamp-text">SOLD</div>
+      {soldText && <div className="sold-stamp-date">{soldText}</div>}
+    </div>
+  );
+})()}
 
                   {imgs.length > 1 && (
                     <div className="market-gallery-controls">
@@ -154,13 +202,37 @@ export default function GLSDefiBravoMarket() {
                   <div className="market-desc">{item.shortDesc}</div>
 
                   <div className="market-actions">
-                    <a
-                      className="wallet-btn"
-                      href={`mailto:${GLSDEFI_CONTACT_EMAIL}?subject=Outright%20Purchase%20-%20Bravo%20Asset%20${item.code}&body=Hi%20GLSDefi%2C%0A%0AI%20would%20like%20to%20purchase%20Bravo%20Asset%20${item.code}%20outright.%0A%0APlease%20advise%20next%20steps%20for%20settlement.%0A`}
-                    >
-                      Contact GLSDefi to Buy Outright
-                    </a>
-                  </div>
+  {item.status === "SOLD" ? (
+    <div className="market-sold-wrap">
+      <div className="market-sold-msg">
+        This item has been sold
+        {(() => {
+          const soldRaw =
+            item.soldDate ||
+            item.sold_on ||
+            item.soldAt ||
+            item.sold_at ||
+            item.dateSold;
+          const soldText = soldRaw ? formatSoldDate(soldRaw) : "";
+          return soldText ? <> • {soldText}</> : null;
+        })()}
+      </div>
+
+      {/* Disabled “button” */}
+      <span className="market-email disabled" aria-disabled="true">
+        Contact GLSDefi to Buy Outright
+      </span>
+    </div>
+  ) : (
+    <a
+      className="wallet-btn"
+      href={`mailto:${GLSDEFI_CONTACT_EMAIL}?subject=Outright%20Purchase%20-%20Bravo%20Asset%20${item.code}&body=Hi%20GLSDefi%2C%0A%0AI%20would%20like%20to%20purchase%20Bravo%20Asset%20${item.code}%20outright.%0A%0APlease%20advise%20next%20steps%20for%20settlement.%0A`}
+    >
+      Contact GLSDefi to Buy Outright
+    </a>
+  )}
+</div>
+
 
                   <div className="market-footnote">
                     Settlement is handled directly by GLSDefi in a single transaction.

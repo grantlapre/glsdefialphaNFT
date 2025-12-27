@@ -20,7 +20,7 @@ export const ASSETS = [
         status: "SOLD",
     
         // Marketplace / sales page fields
-        forSale: false,
+        forSale: true,
         pairable: false,
         location: "Ampang, Kuala Lumpur, MY",
         condition: "Used - Very Good and Clean Condition, regularly Serviced",

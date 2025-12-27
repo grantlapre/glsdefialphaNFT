@@ -6,10 +6,18 @@ import { Link } from "react-router-dom";
 import { ASSETS_BRAVO } from "../data/assets.bravo";
 import { NFTS_BRAVO, INITIAL_ASSIGNMENT_BRAVO } from "../data/nfts.bravo";
 
+const OWNER_ADDRESS = "0x1c62cA762121F15ae516A70cc55e5870e48eFa19".toLowerCase();
+
 const money = (n) =>
   n.toLocaleString(undefined, { style: "currency", currency: "USD" });
 
 export default function BravoAssetPairs() {
+
+  const [account] = useState("0xPUBLIC_VIEWER"); // later replace with wallet
+  const isOwner = account.toLowerCase() === OWNER_ADDRESS;
+
+  const [buybackOffers, setBuybackOffers] = useState({});
+
   const [assignment, setAssignment] = useState(INITIAL_ASSIGNMENT_BRAVO);
 
   const nftsByAsset = useMemo(() => {
@@ -77,12 +85,32 @@ export default function BravoAssetPairs() {
               key={asset.code}
               style={{
                 marginTop: 18,
+                position: "relative",
                 padding: 16,
                 borderRadius: 12,
                 border: "1px solid rgba(0,0,0,0.12)",
                 background: "#fff",
               }}
             >
+{asset.status === "SOLD" && (
+  <div
+    style={{
+      position: "absolute",
+      right: 20,
+      top: 20,
+      padding: "10px 16px",
+      border: "2px solid #0b3d91",
+      background: "#e9f0ff",
+      color: "#0b3d91",
+      fontWeight: 800,
+      borderRadius: 10,
+      transform: "rotate(8deg)",
+    }}
+  >
+    SOLD
+  </div>
+)}
+
               {/* ASSET HEADER */}
               <div
                 style={{
@@ -100,6 +128,13 @@ export default function BravoAssetPairs() {
                   <div>
                     <strong>Status:</strong> {asset.status}
                   </div>
+                  {asset.status === "SOLD" && !isOwner && (
+  <div style={{ marginTop: 10, opacity: 0.85 }}>
+    This item has sold.  
+    If you hold a paired support NFT, please watch for a buyback offer from GLSDEFI.
+  </div>
+)}
+
                 </div>
 
                 <div style={{ textAlign: "right" }}>
@@ -127,36 +162,56 @@ export default function BravoAssetPairs() {
                   <div>
                     <strong>NFTs Shown:</strong> {assigned.length}
                   </div>
+                  {asset.status === "SOLD" && isOwner && (
+  <button
+    className="wallet-btn"
+    onClick={() =>
+      setBuybackOffers((prev) => ({
+        ...prev,
+        [asset.code]: {
+          priceUsd: asset.valueUsd * 0.1, // example
+          status: "OPEN",
+        },
+      }))
+    }
+  >
+    Create Buyback Offer
+  </button>
+)}
+
                 </div>
               </div>
 
-              {/* MIGRATION CONTROLS */}
-              <div
-                style={{
-                  marginTop: 12,
-                  display: "flex",
-                  gap: 10,
-                  flexWrap: "wrap",
-                  alignItems: "center",
-                }}
-              >
-                <span style={{ fontWeight: 700 }}>
-                  Migrate NFTs from {asset.code} →
-                </span>
+             {/* MIGRATION CONTROLS (OWNER ONLY) */}
+{isOwner && (
+  <div
+    style={{
+      marginTop: 12,
+      display: "flex",
+      gap: 10,
+      flexWrap: "wrap",
+      alignItems: "center",
+    }}
+  >
+    <span style={{ fontWeight: 700 }}>
+      Migrate NFTs from {asset.code} →
+    </span>
 
-                {ASSETS_BRAVO.filter((a) => a.code !== asset.code).map(
-                  (target) => (
-                    <button
-                      key={target.code}
-                      className="wallet-btn"
-                      type="button"
-                      onClick={() => migrateAll(asset.code, target.code)}
-                    >
-                      {target.code}
-                    </button>
-                  )
-                )}
-              </div>
+    {ASSETS_BRAVO.filter((a) => a.code !== asset.code).map(
+      (target) => (
+        <button
+          key={target.code}
+          className="wallet-btn"
+          type="button"
+          onClick={() => migrateAll(asset.code, target.code)}
+        >
+          {target.code}
+        </button>
+      )
+    )}
+  </div>
+)}
+
 
               {/* NFT GALLERY */}
               <div
@@ -200,21 +255,47 @@ export default function BravoAssetPairs() {
                         <div style={{ opacity: 0.8, marginTop: 4 }}>
                           Token ID: {nft.tokenId}
                         </div>
+                        {asset.status === "SOLD" &&
+  buybackOffers[asset.code]?.status === "OPEN" && (
+    <div
+      style={{
+        marginTop: 10,
+        padding: 10,
+        borderRadius: 8,
+        background: "#e9f0ff",
+        border: "1px solid #0b3d91",
+      }}
+    >
+      <strong>Buyback Offer:</strong>{" "}
+      {money(buybackOffers[asset.code].priceUsd)}
+      <div style={{ marginTop: 6 }}>
+        <button className="wallet-btn secondary">
+          Accept Offer
+        </button>
+      </div>
+    </div>
+)}
 
-                        <div style={{ marginTop: 10 }}>
-                          <strong>Reassign to:</strong>{" "}
-                          {ASSETS_BRAVO.map((target) => (
-                            <button
-                              key={target.code}
-                              className="wallet-btn"
-                              type="button"
-                              style={{ marginLeft: 6, marginTop: 6 }}
-                              onClick={() => migrateOne(nft.tokenId, target.code)}
-                            >
-                              {target.code}
-                            </button>
-                          ))}
-                        </div>
+                       {/* MOVE SINGLE NFT (OWNER ONLY) */}
+{isOwner && (
+  <div style={{ marginTop: 10 }}>
+    <strong>Reassign to:</strong>{" "}
+    {ASSETS_BRAVO
+      .filter((a) => a.code !== assignment[nft.tokenId])
+      .map((target) => (
+        <button
+          key={target.code}
+          className="wallet-btn secondary"
+          type="button"
+          style={{ marginLeft: 6, marginTop: 6 }}
+          onClick={() => migrateOne(nft.tokenId, target.code)}
+        >
+          Move → {target.code}
+        </button>
+      ))}
+  </div>
+)}
+
                       </div>
                     </div>
                   ))
