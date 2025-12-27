@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/glsdefialphaNFT/static/css/main.a4154f81.css",
-    "main.js": "/glsdefialphaNFT/static/js/main.e8bd1904.js",
+    "main.js": "/glsdefialphaNFT/static/js/main.1c8c0c2e.js",
     "static/js/978.c210bce3.chunk.js": "/glsdefialphaNFT/static/js/978.c210bce3.chunk.js",
     "static/js/800.08b7a168.chunk.js": "/glsdefialphaNFT/static/js/800.08b7a168.chunk.js",
     "static/js/510.d79261dd.chunk.js": "/glsdefialphaNFT/static/js/510.d79261dd.chunk.js",
@@ -54,6 +54,6 @@
   },
   "entrypoints": [
     "static/css/main.a4154f81.css",
-    "static/js/main.e8bd1904.js"
+    "static/js/main.1c8c0c2e.js"
   ]
 }
