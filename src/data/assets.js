@@ -22,11 +22,11 @@ export const ASSETS = [
         // Marketplace / sales page fields
         forSale: true,
         pairable: false,
-        location: "Ampang, Kuala Lumpur, MY",
-        condition: "Used - Very Good and Clean Condition, regularly Serviced",
+        location: "Asia",
+        condition: "Currently in very good condition",
         images: [a1photo1, a1photo2, a1photo3],
         shortDesc:
-          "This item is available for outright purchase via GLSDefi. Settlement is handled in a single transaction.",
+          "This item is for future incentives available only to NFT Members.",
       },
     
       {
