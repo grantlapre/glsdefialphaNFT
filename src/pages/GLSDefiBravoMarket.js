@@ -235,7 +235,7 @@ const sortedItems = [...itemsForSale].sort((a, b) => {
 
 
                   <div className="market-footnote">
-                    Settlement is handled directly by GLSDefi in a single transaction.
+                    For members access only.
                   </div>
                 </div>
               </div>
