@@ -81,8 +81,8 @@ const sortedItems = [...itemsForSale].sort((a, b) => {
           <div>
             <h1 style={{ marginBottom: 6 }}>GLSDefi Bravo — Items for Sale</h1>
             <div style={{ opacity: 0.85, maxWidth: 820 }}>
-              Items listed here are available for <strong>outright purchase</strong>{" "}
-              via GLSDefi. To proceed, contact GLSDefi and reference the relevant{" "}
+              Items listed here are available for <strong>members only to preview</strong>{" "}
+              via GLSDefi. To get the best from your membership, contact GLSDefi and reference the relevant{" "}
               <strong>Asset Code</strong>.
             </div>
           </div>
