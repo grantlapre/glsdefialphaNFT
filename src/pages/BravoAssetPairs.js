@@ -10,6 +10,7 @@ import {
   INITIAL_ASSIGNMENT_BRAVO,
 } from "../data/nfts.bravo";
 import "./AssetPairs.css";
+import BrandLogo from "../components/BrandLogo";
 
 /**
  * GLSDefi Bravo — Membership Pair / Co-Pair Registry
@@ -225,7 +226,7 @@ export default function BravoAssetPairs() {
             Bravo Membership Pair / Co-Pair Registry
           </span>
         </div>
-
+        <BrandLogo />
         {/* PAGE HEADER */}
         <h1
           style={{

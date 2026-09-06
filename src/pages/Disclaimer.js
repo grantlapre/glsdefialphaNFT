@@ -49,6 +49,7 @@ export default function Disclaimer() {
           paddingBottom: 40,
         }}
       >
+         <BrandLogo />
         <h1
           style={{
             color: BRAND,

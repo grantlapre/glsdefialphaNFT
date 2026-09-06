@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 
 import Header from "../components/Header";
-import logo from "../logo.svg";
+
+import BrandLogo from "../components/BrandLogo";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
 
       <section className="project-info">
         <Container>
+        <BrandLogo />
           <h1 className="header">
             GLSDefi Membership Projects
           </h1>

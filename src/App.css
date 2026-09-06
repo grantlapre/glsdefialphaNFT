@@ -578,3 +578,42 @@
 .home-membership-notice a:hover {
   color: #ffffff;
 }
+
+/* ============================================================
+   GLSDefi SHARED BRAND LOGO
+   ============================================================ */
+
+   .brand-logo-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    margin: 18px auto 12px;
+  }
+  
+  .brand-logo {
+    width: 88px;
+    height: 88px;
+  
+    object-fit: contain;
+  
+    opacity: 0.88;
+  
+    filter:
+      drop-shadow(
+        0 0 12px rgba(97, 218, 251, 0.20)
+      );
+  }
+  
+  @media (prefers-reduced-motion: no-preference) {
+    .brand-logo {
+      animation: App-logo-spin infinite 20s linear;
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .brand-logo {
+      width: 72px;
+      height: 72px;
+    }
+  }

@@ -5,6 +5,7 @@ import Container from "react-bootstrap/Container";
 import { ASSETS } from "../data/assets";
 import { NFTS, INITIAL_ASSIGNMENT } from "../data/nfts";
 import "./AssetPairs.css";
+import BrandLogo from "../components/BrandLogo";
 
 /**
  * GLSDefi — Membership Pair / Co-Pair Registry
@@ -264,7 +265,7 @@ export default function AssetPairs() {
             Membership Pair / Co-Pair Registry
           </span>
         </div>
-
+        <BrandLogo />
         {/* ===================================================== */}
         {/* PAGE HEADER */}
         {/* ===================================================== */}

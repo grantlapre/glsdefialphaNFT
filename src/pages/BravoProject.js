@@ -4,7 +4,8 @@ import Container from "react-bootstrap/Container";
 
 import Header from "../components/Header";
 import Cards from "../components/cards";
-import logo from "../logo.svg";
+
+import BrandLogo from "../components/BrandLogo";
 
 const BRAVO_CONTRACT =
   "0xa7bE0301229f49d6ec999D22fdBea20fc3Dbdd7E";
@@ -19,6 +20,7 @@ export default function BravoProject() {
       {/* PROJECT INFORMATION */}
       <section className="project-info">
         <Container>
+        <BrandLogo />
           <h1 className="header">GLSDefi Bravo Project</h1>
 
           <p

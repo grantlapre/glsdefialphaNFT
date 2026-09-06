@@ -4,7 +4,8 @@ import Container from "react-bootstrap/Container";
 
 import Header from "../components/Header";
 import Cards from "../components/cards";
-import logo from "../logo.svg";
+
+import BrandLogo from "../components/BrandLogo";
 
 const ALPHA_CONTRACT =
   "0xA63556e4442cF10EA1d1ABdE363F3FED64d6cff9";
@@ -23,6 +24,7 @@ export default function AlphaProject() {
 
       <section className="project-info">
         <Container>
+        <BrandLogo />
           <h1 className="header">
             GLSDefi Alpha Project
           </h1>

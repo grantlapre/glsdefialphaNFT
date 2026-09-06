@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 
 import { ASSETS } from "../data/assets";
 import "./GLSDefiMarket.css";
+import BrandLogo from "../components/BrandLogo";
 
 /**
  * GLSDefi — Registered Item Marketplace
@@ -142,7 +143,7 @@ export default function GLSDefiMarket() {
             Disclosure &amp; Risk Information
           </Link>
         </div>
-
+        <BrandLogo />
         {/* ===================================================== */}
         {/* PAGE HEADER */}
         {/* ===================================================== */}

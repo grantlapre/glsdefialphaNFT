@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 
 import "./GLSDefiMarket.css";
 import { ASSETS_BRAVO } from "../data/assets.bravo";
+import BrandLogo from "../components/BrandLogo";
 
 /**
  * GLSDefi Bravo — Registered Item Marketplace
@@ -155,7 +156,7 @@ export default function GLSDefiBravoMarket() {
             Disclosure &amp; Risk Information
           </Link>
         </div>
-
+        <BrandLogo />
         {/* ===================================================== */}
         {/* PAGE HEADER */}
         {/* ===================================================== */}
