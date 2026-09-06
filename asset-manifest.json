@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/glsdefialphaNFT/static/css/main.a4154f81.css",
-    "main.js": "/glsdefialphaNFT/static/js/main.56aac79b.js",
+    "main.js": "/glsdefialphaNFT/static/js/main.00904906.js",
     "static/js/978.c210bce3.chunk.js": "/glsdefialphaNFT/static/js/978.c210bce3.chunk.js",
     "static/js/800.08b7a168.chunk.js": "/glsdefialphaNFT/static/js/800.08b7a168.chunk.js",
     "static/js/510.d79261dd.chunk.js": "/glsdefialphaNFT/static/js/510.d79261dd.chunk.js",
@@ -12,12 +12,12 @@
     "static/js/267.17978c26.chunk.js": "/glsdefialphaNFT/static/js/267.17978c26.chunk.js",
     "static/js/288.986caa50.chunk.js": "/glsdefialphaNFT/static/js/288.986caa50.chunk.js",
     "static/js/508.622a3d3a.chunk.js": "/glsdefialphaNFT/static/js/508.622a3d3a.chunk.js",
-    "static/js/480.28331fe5.chunk.js": "/glsdefialphaNFT/static/js/480.28331fe5.chunk.js",
+    "static/js/480.8157f812.chunk.js": "/glsdefialphaNFT/static/js/480.8157f812.chunk.js",
     "static/js/889.6c2464b1.chunk.js": "/glsdefialphaNFT/static/js/889.6c2464b1.chunk.js",
-    "static/js/550.56320f42.chunk.js": "/glsdefialphaNFT/static/js/550.56320f42.chunk.js",
-    "static/js/562.24791a79.chunk.js": "/glsdefialphaNFT/static/js/562.24791a79.chunk.js",
-    "static/js/497.10b8f7d9.chunk.js": "/glsdefialphaNFT/static/js/497.10b8f7d9.chunk.js",
-    "static/js/601.95318d06.chunk.js": "/glsdefialphaNFT/static/js/601.95318d06.chunk.js",
+    "static/js/550.948f6bc7.chunk.js": "/glsdefialphaNFT/static/js/550.948f6bc7.chunk.js",
+    "static/js/562.6151c82f.chunk.js": "/glsdefialphaNFT/static/js/562.6151c82f.chunk.js",
+    "static/js/989.0338b6df.chunk.js": "/glsdefialphaNFT/static/js/989.0338b6df.chunk.js",
+    "static/js/601.be6d4644.chunk.js": "/glsdefialphaNFT/static/js/601.be6d4644.chunk.js",
     "static/js/798.56c3a6e1.chunk.js": "/glsdefialphaNFT/static/js/798.56c3a6e1.chunk.js",
     "static/media/a2photo2.jpg": "/glsdefialphaNFT/static/media/a2photo2.130067f39bb94a6e036e.jpg",
     "static/media/a2photo3.jpg": "/glsdefialphaNFT/static/media/a2photo3.cb719311228508031170.jpg",
@@ -54,6 +54,6 @@
   },
   "entrypoints": [
     "static/css/main.a4154f81.css",
-    "static/js/main.56aac79b.js"
+    "static/js/main.00904906.js"
   ]
 }
