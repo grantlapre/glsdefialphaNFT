@@ -586,28 +586,29 @@ export default function Disclaimer() {
           ER-0 — No Economic Interest.
         </p>
 
-        <div
-          style={{
-            marginTop: 18,
-            display: "flex",
-            gap: 12,
-          }}
+              <div
+        style={{
+          marginTop: 24,
+          display: "flex",
+          justifyContent: "center",
+          gap: 12,
+          flexWrap: "wrap",
+        }}
+      >
+        <button
+          onClick={() => navigate(-1)}
+          className="wallet-btn secondary"
         >
-          <button
-            onClick={() => navigate(-1)}
-            style={{
-              background: BRAND,
-              color: "#fff",
-              border: "none",
-              padding: "8px 12px",
-              borderRadius: 10,
-              cursor: "pointer",
-            }}
-          >
-            ← Back
-          </button>
-        </div>
-        </div>
+          ← Previous Page
+        </button>
+
+        <button
+          onClick={() => navigate("/")}
+          className="wallet-btn"
+        >
+          Home
+        </button>
+      </div>
       </Container>
     </div>
   );
