@@ -104,7 +104,7 @@ export default function GLSDefiBravoMarket() {
   }
 
   return (
-    <div className="App">
+    <div className="market-page">
       <Container
         style={{
           maxWidth: 1200,
