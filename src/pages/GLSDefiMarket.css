@@ -153,7 +153,7 @@
       white;
   
     text-align:
-      left;
+      center;
   }
   
   .market-title {
@@ -536,7 +536,7 @@
   margin: 24px auto 30px;
   padding: 18px;
 
-  text-align: left;
+  text-align: center;
 
   border-radius: 14px;
 
@@ -612,7 +612,7 @@
   margin: 32px auto 0;
   padding: 18px;
 
-  text-align: left;
+  text-align: center;
 
   border-radius: 14px;
 
@@ -649,3 +649,65 @@
 .market-clarification a:hover {
   color: #ffffff;
 }
+
+/* ============================================================
+   GLSDefi MARKETPLACE CENTRED ALIGNMENT
+   ============================================================ */
+
+   .market-page {
+    text-align: center;
+  }
+  
+  .market-page .container {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  /* Marketplace information panels */
+  .market-notice,
+  .market-clarification {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  /* Marketplace cards */
+  .market-card {
+    text-align: center;
+  }
+  
+  .market-body {
+    text-align: center;
+  }
+  
+  /* Metadata */
+  .market-meta {
+    justify-content: center;
+    text-align: center;
+  }
+  
+  /* Description */
+  .market-desc {
+    text-align: center;
+  }
+  
+  /* Buttons */
+  .market-actions {
+    justify-content: center;
+  }
+  
+  /* Direct sale notice */
+  .market-direct-sale {
+    text-align: center;
+  }
+  
+  /* Footnotes */
+  .market-footnote {
+    text-align: center;
+  }
+  
+  /* Sold information */
+  .market-sold-wrap,
+  .market-sold-msg {
+    text-align: center;
+  }

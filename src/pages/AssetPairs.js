@@ -392,9 +392,11 @@ export default function AssetPairs() {
               <div
                 style={{
                   display: "flex",
-                  justifyContent: "space-between",
-                  gap: 20,
+                  justifyContent: "center",
+                  alignItems: "flex-start",
+                  gap: 40,
                   flexWrap: "wrap",
+                  textAlign: "center",
                 }}
               >
                 {/* LEFT */}

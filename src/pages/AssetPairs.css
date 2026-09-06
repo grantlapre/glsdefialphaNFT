@@ -26,7 +26,7 @@
     margin: 22px auto;
     padding: 18px;
   
-    text-align: left;
+    text-align: center;
   
     border-radius: 14px;
   
@@ -84,7 +84,7 @@
     box-shadow:
       0 12px 28px rgba(0, 0, 0, 0.22);
   
-    text-align: left;
+    text-align: center;
   }
   
   .pair-card h3,
@@ -272,7 +272,7 @@
     margin: 30px auto 0;
     padding: 18px;
   
-    text-align: left;
+    text-align: center;
   
     border-radius: 14px;
   
@@ -299,4 +299,50 @@
   .pair-clarification p {
     color: #e6edf7;
     line-height: 1.55;
+  }
+
+  /* ============================================================
+   GLSDefi CENTRED PAGE ALIGNMENT
+   ============================================================ */
+
+.pair-page {
+    text-align: center;
+  }
+  
+  .pair-page .container {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  /* Main information panels */
+  .pair-notice,
+  .pair-clarification {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  /* Registered item cards */
+  .pair-card {
+    text-align: center;
+  }
+  
+  /* Pair details */
+  .pair-details {
+    text-align: center;
+  }
+  
+  .pair-details-row {
+    justify-content: center;
+    text-align: center;
+  }
+  
+  /* ER-0 information */
+  .pair-er0 {
+    text-align: center;
+  }
+  
+  /* Administrator controls */
+  .pair-admin {
+    text-align: center;
   }
