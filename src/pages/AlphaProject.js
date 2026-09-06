@@ -11,7 +11,7 @@ const ALPHA_CONTRACT = "0xA63556e4442cF10EA1d1ABdE363F3FED64d6cff9";
 export default function AlphaProject() {
 
   const [acceptedDisclosure, setAcceptedDisclosure] = useState(false);
-  
+
   return (
     <div className="App">
       <Header />
@@ -96,16 +96,10 @@ export default function AlphaProject() {
         </Link>
       </p>
 
-      <button
-        disabled={!acceptedDisclosure}
-        onClick={() => {
-          // your existing NFT purchase/mint function goes here
-        }}
-      >
-        Acquire Membership NFT
-      </button>
+     
           <div className="mint-center">
-            <Cards project="alpha" />
+            <Cards project="alpha"
+              acceptedDisclosure={acceptedDisclosure} />
           </div>
         </Container>
       </section>

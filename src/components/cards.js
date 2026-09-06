@@ -15,7 +15,7 @@ import { MINT_IMAGES_ALPHA } from "../data/mintImages.alpha";
 import { MINT_IMAGES_BRAVO } from "../data/mintImages.bravo";
 
 
-function Cards({ project = "alpha" }) {
+function Cards({ project = "alpha", acceptedDisclosure  }) {
   const [account, setAccount] = useState("");
   const [mintPriceWei, setMintPriceWei] = useState(null);
   const [loadingPrice, setLoadingPrice] = useState(false);
@@ -198,6 +198,7 @@ function Cards({ project = "alpha" }) {
           <button
             className="wallet-btn"
             type="button"
+            disabled={!acceptedDisclosure}
             onClick={mint}
             disabled={minting || !mintPriceWei}
           >
