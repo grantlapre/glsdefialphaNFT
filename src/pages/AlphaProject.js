@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Header from "../components/Header";
@@ -6,6 +6,7 @@ import Cards from "../components/cards";
 import logo from "../logo.svg";
 
 const ALPHA_CONTRACT = "0xA63556e4442cF10EA1d1ABdE363F3FED64d6cff9";
+const [acceptedDisclosure, setAcceptedDisclosure] = useState(false);
 
 export default function AlphaProject() {
   return (
@@ -76,15 +77,30 @@ export default function AlphaProject() {
   </Link>
 </p>
 <label>
-  <input
-    type="checkbox"
-    checked={acceptedDisclosure}
-    onChange={(e) => setAcceptedDisclosure(e.target.checked)}
-  />
+        <input
+          type="checkbox"
+          checked={acceptedDisclosure}
+          onChange={(e) => setAcceptedDisclosure(e.target.checked)}
+        />
 
-  I have read and accept the GLSDefi Disclosure,
-  Pair/Co-Pair terms and ER-0 classification.
-</label>
+        I have read and accept the GLSDefi Disclosure,
+        Pair/Co-Pair terms and ER-0 classification.
+      </label>
+
+      <p>
+        <Link to="/disclaimer">
+          Read the Disclosure, Pair/Co-Pair and Risk Information
+        </Link>
+      </p>
+
+      <button
+        disabled={!acceptedDisclosure}
+        onClick={() => {
+          // your existing NFT purchase/mint function goes here
+        }}
+      >
+        Acquire Membership NFT
+      </button>
           <div className="mint-center">
             <Cards project="alpha" />
           </div>
