@@ -39,7 +39,7 @@ import "./Disclaimer.css";
 
 export default function Disclaimer() {
   const navigate = useNavigate();
-  const BRAND = "#0b3d91";
+  const BRAND = "#61dafb";
   const LAST_UPDATED = "6 Sep 2026";
 
   return (

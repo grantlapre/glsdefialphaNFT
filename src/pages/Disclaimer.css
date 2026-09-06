@@ -17,101 +17,25 @@
     text-align: center;
   }
   
-  .disclaimer-page .container {
-    margin-left: auto;
-    margin-right: auto;
-  }
   
-  
-  /* Main disclosure content */
+  /* ============================================================
+     MAIN CONTENT
+     ============================================================ */
   
   .disclaimer-content {
     max-width: 900px;
   
     margin: 0 auto;
+  
     padding: 20px 20px 50px;
   
     text-align: center;
   }
   
   
-  /* Individual disclosure sections */
-  
-  .disclaimer-section {
-    margin: 20px auto;
-    padding: 18px;
-  
-    border-radius: 14px;
-  
-    background:
-      linear-gradient(
-        135deg,
-        rgba(11, 61, 145, 0.30),
-        rgba(21, 26, 38, 0.95)
-      );
-  
-    border:
-      1px solid rgba(97, 218, 251, 0.20);
-  
-    color: #ffffff;
-  
-    text-align: center;
-  
-    box-shadow:
-      0 10px 24px rgba(0, 0, 0, 0.16);
-  }
-  
-  .disclaimer-section h2,
-  .disclaimer-section h3,
-  .disclaimer-section h4 {
-    color: #ffffff;
-    text-align: center;
-  }
-  
-  .disclaimer-section p {
-    color: #e6edf7;
-  
-    line-height: 1.6;
-  
-    text-align: center;
-  }
-  
-  .disclaimer-section strong {
-    color: #61dafb;
-  }
-  
-  
-  /* Lists */
-  
-  .disclaimer-section ul {
-    display: inline-block;
-  
-    max-width: 720px;
-  
-    margin: 10px auto;
-  
-    padding-left: 24px;
-  
-    text-align: left;
-  
-    color: #e6edf7;
-  }
-  
-  
-  /* Links */
-  
-  .disclaimer-page a {
-    color: #61dafb;
-  
-    font-weight: 600;
-  }
-  
-  .disclaimer-page a:hover {
-    color: #ffffff;
-  }
-  
-  
-  /* Main title */
+  /* ============================================================
+     TITLE
+     ============================================================ */
   
   .disclaimer-title {
     text-align: center;
@@ -122,43 +46,144 @@
   }
   
   
-  /* Last updated */
+  /* ============================================================
+     HEADINGS
+     ============================================================ */
   
-  .disclaimer-updated {
+  .disclaimer-content h2,
+  .disclaimer-content h3,
+  .disclaimer-content h4 {
     text-align: center;
   
-    color: #aeb8c8;
-  
-    margin-bottom: 24px;
-  
-    font-size: 14px;
+    margin-top: 32px;
+    margin-bottom: 14px;
   }
   
   
-  /* Bottom navigation */
+  /* ============================================================
+     PARAGRAPHS
+     ============================================================ */
   
-  .disclaimer-navigation {
-    display: flex;
+  .disclaimer-content p {
+    max-width: 850px;
   
+    margin-left: auto;
+    margin-right: auto;
+  
+    text-align: center;
+  
+    color: #e6edf7;
+  
+    line-height: 1.6;
+  }
+  
+  
+  /* ============================================================
+     IMPORTANT / STRONG TEXT
+     ============================================================ */
+  
+  .disclaimer-content strong {
+    color: #61dafb;
+  }
+  
+  
+  /* ============================================================
+     BULLET LISTS
+     ============================================================ */
+  
+  .disclaimer-content ul {
+    display: block;
+  
+    width: fit-content;
+    max-width: 760px;
+  
+    margin: 16px auto 24px;
+  
+    padding-left: 28px;
+  
+    text-align: left;
+  
+    color: #e6edf7;
+  
+    line-height: 1.6;
+  }
+  
+  .disclaimer-content li {
+    margin-bottom: 9px;
+  
+    padding-left: 4px;
+  
+    color: #e6edf7;
+  }
+  
+  .disclaimer-content li strong {
+    color: #61dafb;
+  }
+  
+  .disclaimer-content li:last-child {
+    margin-bottom: 0;
+  }
+  
+  
+  /* ============================================================
+     LINKS
+     ============================================================ */
+  
+  .disclaimer-content a {
+    color: #61dafb;
+  
+    font-weight: 600;
+  }
+  
+  .disclaimer-content a:hover {
+    color: #ffffff;
+  }
+  
+  
+  /* ============================================================
+     DIVIDER
+     ============================================================ */
+  
+  .disclaimer-content hr {
+    margin: 34px auto;
+  
+    border: none;
+  
+    border-top:
+      1px solid rgba(255, 255, 255, 0.16);
+  
+    max-width: 760px;
+  }
+  
+  
+  /* ============================================================
+     BACK BUTTON AREA
+     ============================================================ */
+  
+  .disclaimer-content > div:last-child {
     justify-content: center;
-  
-    gap: 18px;
-  
-    flex-wrap: wrap;
-  
-    margin: 30px auto;
   }
   
   
-  /* Mobile */
+  /* ============================================================
+     MOBILE
+     ============================================================ */
   
   @media (max-width: 600px) {
+  
     .disclaimer-content {
       padding-left: 14px;
       padding-right: 14px;
     }
   
-    .disclaimer-section {
-      padding: 15px;
+    .disclaimer-content ul {
+      width: auto;
+  
+      max-width: 100%;
+  
+      margin-left: 8px;
+      margin-right: 8px;
+  
+      padding-left: 24px;
     }
   }
