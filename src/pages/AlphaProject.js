@@ -74,11 +74,6 @@ export default function AlphaProject() {
   and are classified ER-0 — No Economic Interest.
 </p>
 
-<p>
-  <Link to="/disclaimer">
-    Read the Disclosure, Pair/Co-Pair and Risk Information
-  </Link>
-</p>
 <label>
         <input
           type="checkbox"

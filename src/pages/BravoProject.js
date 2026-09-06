@@ -70,13 +70,25 @@ export default function BravoProject() {
   and are classified ER-0 — No Economic Interest.
 </p>
 
-<p>
-  <Link to="/disclaimer">
-    Read the Disclosure, Pair/Co-Pair and Risk Information
-  </Link>
-</p>
+<label>
+        <input
+          type="checkbox"
+          checked={acceptedDisclosure}
+          onChange={(e) => setAcceptedDisclosure(e.target.checked)}
+        />
+
+        I have read and accept the GLSDefi Disclosure,
+        Pair/Co-Pair terms and ER-0 classification.
+      </label>
+
+      <p>
+        <Link to="/disclaimer">
+          Read the Disclosure, Pair/Co-Pair and Risk Information
+        </Link>
+      </p>
           <div className="mint-center">
-            <Cards project="bravo" />
+            <Cards project="bravo" 
+            acceptedDisclosure={acceptedDisclosure} />
           </div>
         </Container>
       </section>
