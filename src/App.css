@@ -530,3 +530,51 @@
         12px;
     }
   }
+
+  /* ============================================================
+   HOME PAGE MEMBERSHIP NOTICE
+   ============================================================ */
+
+.home-membership-notice {
+  max-width: 900px;
+
+  margin: 24px auto;
+  padding: 18px;
+
+  text-align: left;
+
+  border-radius: 14px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(11, 61, 145, 0.30),
+      rgba(21, 26, 38, 0.95)
+    );
+
+  border:
+    1px solid rgba(97, 218, 251, 0.28);
+
+  color: #ffffff;
+
+  box-shadow:
+    0 10px 24px rgba(0, 0, 0, 0.18);
+}
+
+.home-membership-notice strong {
+  color: #61dafb;
+}
+
+.home-membership-notice p {
+  color: #e6edf7;
+  line-height: 1.55;
+}
+
+.home-membership-notice a {
+  color: #61dafb;
+  font-weight: 600;
+}
+
+.home-membership-notice a:hover {
+  color: #ffffff;
+}

@@ -35,17 +35,7 @@ export default function Home() {
           </p>
 
           {/* MEMBERSHIP / ER-0 NOTICE */}
-          <div
-            style={{
-              maxWidth: 900,
-              margin: "22px auto 0",
-              padding: 16,
-              borderRadius: 12,
-              background: "#f7f9fc",
-              border: "1px solid rgba(11,61,145,0.25)",
-              textAlign: "left",
-            }}
-          >
+          <div className="home-membership-notice">
             <strong>
               Membership &amp; Pair / Co-Pair Notice
             </strong>
