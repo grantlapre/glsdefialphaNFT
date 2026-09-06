@@ -2,6 +2,7 @@ import React from "react";
 import Container from "react-bootstrap/Container";
 import { useNavigate } from "react-router-dom";
 import BrandLogo from "../components/BrandLogo";
+import "./Disclaimer.css";
 
 /**
  * GLSDefi — Disclosure, Membership, Pairing & Risk Information
@@ -42,21 +43,11 @@ export default function Disclaimer() {
   const LAST_UPDATED = "6 Sep 2026";
 
   return (
-    <div className="App">
-      <Container
-        style={{
-          maxWidth: 900,
-          paddingTop: 24,
-          paddingBottom: 40,
-        }}
-      >
+    <div className="disclaimer-page">
+      <Container>
          <BrandLogo />
-        <h1
-          style={{
-            color: BRAND,
-            marginBottom: 6,
-          }}
-        >
+         <div className="disclaimer-content">
+        <h1 className="disclaimer-title">
           GLSDefi — Disclosure, Membership, Pairing &amp; Risk Information
         </h1>
 
@@ -615,6 +606,7 @@ export default function Disclaimer() {
           >
             ← Back
           </button>
+        </div>
         </div>
       </Container>
     </div>

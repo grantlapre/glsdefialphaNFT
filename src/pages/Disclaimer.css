@@ -1,0 +1,164 @@
+/* ============================================================
+   GLSDefi DISCLAIMER / DISCLOSURE PAGE
+   ============================================================ */
+
+   .disclaimer-page {
+    min-height: 100vh;
+  
+    background:
+      linear-gradient(
+        180deg,
+        #0b1020,
+        #11182a
+      );
+  
+    color: #ffffff;
+  
+    text-align: center;
+  }
+  
+  .disclaimer-page .container {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  
+  /* Main disclosure content */
+  
+  .disclaimer-content {
+    max-width: 900px;
+  
+    margin: 0 auto;
+    padding: 20px 20px 50px;
+  
+    text-align: center;
+  }
+  
+  
+  /* Individual disclosure sections */
+  
+  .disclaimer-section {
+    margin: 20px auto;
+    padding: 18px;
+  
+    border-radius: 14px;
+  
+    background:
+      linear-gradient(
+        135deg,
+        rgba(11, 61, 145, 0.30),
+        rgba(21, 26, 38, 0.95)
+      );
+  
+    border:
+      1px solid rgba(97, 218, 251, 0.20);
+  
+    color: #ffffff;
+  
+    text-align: center;
+  
+    box-shadow:
+      0 10px 24px rgba(0, 0, 0, 0.16);
+  }
+  
+  .disclaimer-section h2,
+  .disclaimer-section h3,
+  .disclaimer-section h4 {
+    color: #ffffff;
+    text-align: center;
+  }
+  
+  .disclaimer-section p {
+    color: #e6edf7;
+  
+    line-height: 1.6;
+  
+    text-align: center;
+  }
+  
+  .disclaimer-section strong {
+    color: #61dafb;
+  }
+  
+  
+  /* Lists */
+  
+  .disclaimer-section ul {
+    display: inline-block;
+  
+    max-width: 720px;
+  
+    margin: 10px auto;
+  
+    padding-left: 24px;
+  
+    text-align: left;
+  
+    color: #e6edf7;
+  }
+  
+  
+  /* Links */
+  
+  .disclaimer-page a {
+    color: #61dafb;
+  
+    font-weight: 600;
+  }
+  
+  .disclaimer-page a:hover {
+    color: #ffffff;
+  }
+  
+  
+  /* Main title */
+  
+  .disclaimer-title {
+    text-align: center;
+  
+    margin: 10px auto 8px;
+  
+    color: #ffffff;
+  }
+  
+  
+  /* Last updated */
+  
+  .disclaimer-updated {
+    text-align: center;
+  
+    color: #aeb8c8;
+  
+    margin-bottom: 24px;
+  
+    font-size: 14px;
+  }
+  
+  
+  /* Bottom navigation */
+  
+  .disclaimer-navigation {
+    display: flex;
+  
+    justify-content: center;
+  
+    gap: 18px;
+  
+    flex-wrap: wrap;
+  
+    margin: 30px auto;
+  }
+  
+  
+  /* Mobile */
+  
+  @media (max-width: 600px) {
+    .disclaimer-content {
+      padding-left: 14px;
+      padding-right: 14px;
+    }
+  
+    .disclaimer-section {
+      padding: 15px;
+    }
+  }
