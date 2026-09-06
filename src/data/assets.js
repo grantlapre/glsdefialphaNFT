@@ -26,7 +26,7 @@ export const ASSETS = [
         condition: "Currently in very good condition",
         images: [a1photo1, a1photo2, a1photo3],
         shortDesc:
-          "This item is for future incentives available only to NFT Members.",
+          "This item is no longer available for members to pair-share",
       },
     
       {
@@ -41,18 +41,18 @@ export const ASSETS = [
         // Marketplace / sales page fields
         forSale: true,
         pairable: true,
-        location: "Mount Morgan, QLD",
+        location: "Queensland, AU",
         condition: "Used - 1993 Millard Caravan, tows well, reg'd",
         images: [a2photo1, a2photo2, a2photo3],
         shortDesc: 
-          "This item is available for outright purchase via GLSDefi. Settlement is handled in a single transaction.",
+          "This item is available for members to pair-share.",
       },
     
       {
         code: "0003",
         name: "GLS Alpha Item 0003",
         valueUsd: 10000,
-        hiddenValue: true,
+        hiddenValue: false,
         totalNfts: 50,
         cappedSupply: 35,
         status: "active",
@@ -60,11 +60,11 @@ export const ASSETS = [
         // Marketplace / sales page fields
         forSale: true,
         pairable: true,
-        location: "Perth, WA",
+        location: "Western Australia, AU",
         condition: "19th Century Art - Joseph Charles Nigote [pair]",
         images: [a3photo1],
         shortDesc: 
-          "This item is available for outright purchase via GLSDefi. Settlement is handled in a single transaction.",
+          "This item is available for memebers to pair-shair.",
       },
 
   ];
