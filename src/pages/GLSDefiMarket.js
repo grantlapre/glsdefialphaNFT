@@ -1,7 +1,3 @@
-rewrite the entire marketplace.js file into a clean drop-in version, just as we did with both AssetPairs files.
-
-Here is a clean drop-in rewrite for marketplace.js. It keeps the existing marketplace behaviour, photo gallery, sold sorting, email contact, and CSS classes, while strengthening the separation between direct item sale and GLSDefi membership / Pair / Co-Pair / ER-0.
-
 // src/pages/marketplace.js
 
 import React, { useState } from "react";
