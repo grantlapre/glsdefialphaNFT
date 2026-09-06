@@ -195,15 +195,14 @@ function Cards({ project = "alpha", acceptedDisclosure  }) {
         <Amount value={qty} onChange={setQty} />
 
         <div style={{ marginTop: 12 }}>
-          <button
-            className="wallet-btn"
-            type="button"
-            disabled={!acceptedDisclosure}
-            onClick={mint}
-            disabled={minting || !mintPriceWei}
-          >
-            {minting ? "Minting…" : "Mint Now"}
-          </button>
+        <button
+          className="wallet-btn"
+          type="button"
+          onClick={mint}
+          disabled={!acceptedDisclosure || minting || !mintPriceWei}
+        >
+          {minting ? "Minting…" : "Mint Now"}
+        </button>
         </div>
 
         {!!error && (
