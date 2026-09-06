@@ -24,7 +24,7 @@ export default function AlphaProject() {
 
       <section className="project-info">
         <Container>
-        <BrandLogo />
+     
           <h1 className="header">
             GLSDefi Alpha Project
           </h1>
@@ -106,14 +106,7 @@ export default function AlphaProject() {
               marginBottom: 18,
             }}
           >
-            <img
-              src={logo}
-              className="App-logo"
-              alt="GLSDefi logo"
-              style={{
-                maxWidth: 140,
-              }}
-            />
+            <BrandLogo />
           </div>
 
           <h3

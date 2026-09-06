@@ -17,7 +17,7 @@ export default function Home() {
 
       <section className="project-info">
         <Container>
-        <BrandLogo />
+      
           <h1 className="header">
             GLSDefi Membership Projects
           </h1>
@@ -97,14 +97,7 @@ export default function Home() {
               marginBottom: 18,
             }}
           >
-            <img
-              src={logo}
-              className="App-logo"
-              alt="GLSDefi logo"
-              style={{
-                maxWidth: 140,
-              }}
-            />
+            <BrandLogo />
           </div>
 
           <h3

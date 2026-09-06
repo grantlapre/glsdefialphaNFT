@@ -1,6 +1,7 @@
 import React from "react";
 import Container from "react-bootstrap/Container";
 import { useNavigate } from "react-router-dom";
+import BrandLogo from "../components/BrandLogo";
 
 /**
  * GLSDefi — Disclosure, Membership, Pairing & Risk Information

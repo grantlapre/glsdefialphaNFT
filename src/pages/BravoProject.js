@@ -20,7 +20,7 @@ export default function BravoProject() {
       {/* PROJECT INFORMATION */}
       <section className="project-info">
         <Container>
-        <BrandLogo />
+      
           <h1 className="header">GLSDefi Bravo Project</h1>
 
           <p
@@ -84,12 +84,7 @@ export default function BravoProject() {
       <section className="project-mint">
         <Container>
           <div style={{ marginBottom: 18 }}>
-            <img
-              src={logo}
-              className="App-logo"
-              alt="GLSDefi logo"
-              style={{ maxWidth: 140 }}
-            />
+          <BrandLogo />
           </div>
 
           <h3 style={{ marginBottom: 6 }}>
