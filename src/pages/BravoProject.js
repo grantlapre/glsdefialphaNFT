@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Header from "../components/Header";
@@ -8,6 +8,7 @@ import logo from "../logo.svg";
 const BRAVO_CONTRACT = "0xa7bE0301229f49d6ec999D22fdBea20fc3Dbdd7E";
 
 export default function BravoProject() {
+  const [acceptedDisclosure, setAcceptedDisclosure] = useState(false);
   return (
     <div className="App">
       <Header />
