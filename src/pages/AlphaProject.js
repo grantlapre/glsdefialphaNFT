@@ -6,9 +6,12 @@ import Cards from "../components/cards";
 import logo from "../logo.svg";
 
 const ALPHA_CONTRACT = "0xA63556e4442cF10EA1d1ABdE363F3FED64d6cff9";
-const [acceptedDisclosure, setAcceptedDisclosure] = useState(false);
+
 
 export default function AlphaProject() {
+
+  const [acceptedDisclosure, setAcceptedDisclosure] = useState(false);
+  
   return (
     <div className="App">
       <Header />
