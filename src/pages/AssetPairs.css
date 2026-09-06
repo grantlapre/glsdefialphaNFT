@@ -1,0 +1,302 @@
+/* ============================================================
+   GLSDefi PAIR / CO-PAIR REGISTRY
+   ============================================================ */
+
+   .pair-page {
+    min-height: 100vh;
+  
+    background:
+      linear-gradient(
+        180deg,
+        #0b1020,
+        #11182a
+      );
+  
+    color: #ffffff;
+  }
+  
+  
+  /* ============================================================
+     PAIR PAGE INTRODUCTION / NOTICE
+     ============================================================ */
+  
+  .pair-notice {
+    max-width: 900px;
+  
+    margin: 22px auto;
+    padding: 18px;
+  
+    text-align: left;
+  
+    border-radius: 14px;
+  
+    background:
+      linear-gradient(
+        135deg,
+        rgba(11, 61, 145, 0.30),
+        rgba(21, 26, 38, 0.95)
+      );
+  
+    border:
+      1px solid rgba(97, 218, 251, 0.28);
+  
+    color: #ffffff;
+  
+    box-shadow:
+      0 10px 24px rgba(0, 0, 0, 0.18);
+  }
+  
+  .pair-notice strong {
+    color: #61dafb;
+  }
+  
+  .pair-notice p {
+    color: #e6edf7;
+    line-height: 1.55;
+  }
+  
+  .pair-notice a {
+    color: #61dafb;
+  }
+  
+  
+  /* ============================================================
+     PAIR REGISTRY CARD
+     ============================================================ */
+  
+  .pair-card {
+    border-radius: 14px;
+  
+    border:
+      1px solid rgba(255, 255, 255, 0.14);
+  
+    background:
+      linear-gradient(
+        180deg,
+        #161d2d,
+        #111827
+      );
+  
+    color: #ffffff;
+  
+    padding: 16px;
+  
+    box-shadow:
+      0 12px 28px rgba(0, 0, 0, 0.22);
+  
+    text-align: left;
+  }
+  
+  .pair-card h3,
+  .pair-card h4,
+  .pair-card strong {
+    color: #ffffff;
+  }
+  
+  .pair-card p {
+    color: #d8deea;
+  }
+  
+  
+  /* ============================================================
+     PAIR DATA / DETAILS
+     ============================================================ */
+  
+  .pair-details {
+    margin-top: 12px;
+  
+    padding: 12px;
+  
+    border-radius: 10px;
+  
+    background:
+      rgba(255, 255, 255, 0.05);
+  
+    border:
+      1px solid rgba(255, 255, 255, 0.10);
+  
+    color: #e6edf7;
+  }
+  
+  .pair-details-row {
+    display: flex;
+  
+    justify-content: space-between;
+  
+    gap: 12px;
+  
+    padding: 5px 0;
+  
+    border-bottom:
+      1px solid rgba(255, 255, 255, 0.06);
+  }
+  
+  .pair-details-row:last-child {
+    border-bottom: none;
+  }
+  
+  .pair-label {
+    color: #aeb8c8;
+  }
+  
+  .pair-value {
+    color: #ffffff;
+    font-weight: 700;
+  }
+  
+  
+  /* ============================================================
+     ER-0 CLASSIFICATION
+     ============================================================ */
+  
+  .pair-er0 {
+    margin-top: 14px;
+  
+    padding: 12px;
+  
+    border-radius: 10px;
+  
+    background:
+      rgba(97, 218, 251, 0.08);
+  
+    border:
+      1px solid rgba(97, 218, 251, 0.22);
+  
+    color: #e6edf7;
+  }
+  
+  .pair-er0 strong {
+    color: #61dafb;
+  }
+  
+  
+  /* ============================================================
+     STATUS BADGES
+     ============================================================ */
+  
+  .pair-status {
+    display: inline-block;
+  
+    padding: 5px 9px;
+  
+    border-radius: 999px;
+  
+    font-size: 12px;
+  
+    font-weight: 800;
+  }
+  
+  .pair-status.active {
+    background:
+      rgba(65, 200, 120, 0.14);
+  
+    color: #8ee8b1;
+  
+    border:
+      1px solid rgba(65, 200, 120, 0.28);
+  }
+  
+  .pair-status.pending {
+    background:
+      rgba(255, 193, 7, 0.12);
+  
+    color: #ffd86b;
+  
+    border:
+      1px solid rgba(255, 193, 7, 0.25);
+  }
+  
+  .pair-status.suspended {
+    background:
+      rgba(255, 125, 90, 0.12);
+  
+    color: #ffb095;
+  
+    border:
+      1px solid rgba(255, 125, 90, 0.25);
+  }
+  
+  .pair-status.archived {
+    background:
+      rgba(255, 255, 255, 0.08);
+  
+    color: #aeb8c8;
+  
+    border:
+      1px solid rgba(255, 255, 255, 0.14);
+  }
+  
+  
+  /* ============================================================
+     ADMIN / ACTION PANEL
+     ============================================================ */
+  
+  .pair-admin {
+    margin-top: 16px;
+  
+    padding: 14px;
+  
+    border-radius: 12px;
+  
+    background:
+      rgba(255, 255, 255, 0.05);
+  
+    border:
+      1px solid rgba(255, 255, 255, 0.10);
+  
+    color: #ffffff;
+  }
+  
+  .pair-admin select,
+  .pair-admin input {
+    background: #0f1627;
+  
+    color: #ffffff;
+  
+    border:
+      1px solid rgba(255, 255, 255, 0.18);
+  
+    border-radius: 8px;
+  
+    padding: 8px;
+  }
+  
+  
+  /* ============================================================
+     FINAL CLARIFICATION
+     ============================================================ */
+  
+  .pair-clarification {
+    max-width: 900px;
+  
+    margin: 30px auto 0;
+    padding: 18px;
+  
+    text-align: left;
+  
+    border-radius: 14px;
+  
+    background:
+      linear-gradient(
+        135deg,
+        rgba(21, 26, 38, 0.96),
+        rgba(11, 61, 145, 0.24)
+      );
+  
+    border:
+      1px solid rgba(255, 255, 255, 0.12);
+  
+    color: #ffffff;
+  
+    box-shadow:
+      0 10px 24px rgba(0, 0, 0, 0.18);
+  }
+  
+  .pair-clarification strong {
+    color: #61dafb;
+  }
+  
+  .pair-clarification p {
+    color: #e6edf7;
+    line-height: 1.55;
+  }

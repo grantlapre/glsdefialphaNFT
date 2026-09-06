@@ -9,6 +9,7 @@ import {
   NFTS_BRAVO,
   INITIAL_ASSIGNMENT_BRAVO,
 } from "../data/nfts.bravo";
+import "./AssetPairs.css";
 
 /**
  * GLSDefi Bravo — Membership Pair / Co-Pair Registry

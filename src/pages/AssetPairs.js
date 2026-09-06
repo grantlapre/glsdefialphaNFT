@@ -4,6 +4,7 @@ import Container from "react-bootstrap/Container";
 
 import { ASSETS } from "../data/assets";
 import { NFTS, INITIAL_ASSIGNMENT } from "../data/nfts";
+import "./AssetPairs.css";
 
 /**
  * GLSDefi — Membership Pair / Co-Pair Registry
