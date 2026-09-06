@@ -608,8 +608,10 @@ export default function Disclaimer() {
         >
           Home
         </button>
-      </div>
-      </Container>
-    </div>
-  );
+        </div>
+
+</div>
+</Container>
+</div>
+);
 }
