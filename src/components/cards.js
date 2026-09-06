@@ -88,50 +88,60 @@ function Cards({ project = "alpha", acceptedDisclosure  }) {
     };
   }, [hasProvider]);
 
+
+
   async function mint() {
     setError("");
-
+  
+    if (!acceptedDisclosure) {
+      setError(
+        "Please read and accept the GLSDefi Disclosure, Pair/Co-Pair terms and ER-0 classification before minting."
+      );
+      return;
+    }
+  
     if (!hasProvider) {
       setError("MetaMask not detected.");
       return;
     }
-
+  
     if (!contractMeta.address) {
       setError("Contract address is missing for this project.");
       return;
     }
-
+  
     // Ensure wallet connected
     if (!account) {
       await connectWallet();
-      // If user rejected connect, stop
+  
       const selected = window.ethereum?.selectedAddress;
       if (!selected) return;
     }
-
+  
     try {
       setMinting(true);
-
+  
       const provider = new ethers.BrowserProvider(window.ethereum);
       const signer = await provider.getSigner();
-
+  
       const contract = new ethers.Contract(
         contractMeta.address,
         contractMeta.abi,
         signer
       );
-
-      // Refresh mint price just-in-time
+  
       const price = await contract.mintPrice();
       setMintPriceWei(price);
-
+  
       const safeQty = Math.max(1, Number(qty || 1));
       const totalValue = price * BigInt(safeQty);
-
-      const tx = await contract.publicSaleMint(safeQty, { value: totalValue });
+  
+      const tx = await contract.publicSaleMint(safeQty, {
+        value: totalValue,
+      });
+  
       await tx.wait();
-
-      // Optional: refresh price after mint
+  
       fetchMintPrice();
     } catch (e) {
       setError(e?.reason || e?.message || "Mint failed.");
