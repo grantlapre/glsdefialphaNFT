@@ -1,65 +1,229 @@
 import React, { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import Container from "react-bootstrap/Container";
+
 import { ASSETS } from "../data/assets";
 import { NFTS, INITIAL_ASSIGNMENT } from "../data/nfts";
 
+/**
+ * GLSDefi — Membership Pair / Co-Pair Registry
+ *
+ * IMPORTANT:
+ * Pair and Co-Pair are association mechanisms only.
+ *
+ * They do NOT create or represent:
+ * - legal ownership
+ * - beneficial ownership
+ * - fractional ownership
+ * - equity
+ * - security interests
+ * - income rights
+ * - profit rights
+ * - appreciation rights
+ * - sale-proceeds rights
+ * - redemption rights
+ * - collateral rights
+ *
+ * Standard associations are classified:
+ *
+ * ER-0 — NO ECONOMIC INTEREST
+ */
 
-const OWNER_ADDRESS = "0x1c62cA762121F15ae516A70cc55e5870e48eFa19".toLowerCase();
-
-
-const money = (n) =>
-  n.toLocaleString(undefined, { style: "currency", currency: "USD" });
-
-
+// Administrative wallet only.
+// This does NOT mean ownership of any underlying asset.
+const ADMIN_ADDRESS =
+  "0x1c62cA762121F15ae516A70cc55e5870e48eFa19".toLowerCase();
 
 export default function AssetPairs() {
+  /**
+   * Temporary account placeholder.
+   *
+   * Later this can be replaced with the connected wallet address.
+   */
+  const [account] = useState("0xPUBLIC_VIEWER");
 
-    const [account] = useState("0xPUBLIC_VIEWER"); // later replace with wallet
-    const isOwner = account.toLowerCase() === OWNER_ADDRESS;
+  const isAdmin =
+    account.toLowerCase() === ADMIN_ADDRESS;
 
-    const [buybackOffers, setBuybackOffers] = useState({});
+  /**
+   * Existing INITIAL_ASSIGNMENT data is retained so you do not
+   * need to immediately rewrite ../data/nfts.
+   *
+   * Internally, however, we treat it as a Pair / Co-Pair
+   * association registry rather than an ownership assignment.
+   */
+  const [pairings, setPairings] =
+    useState(INITIAL_ASSIGNMENT);
 
-      
-  const [assignment, setAssignment] = useState(INITIAL_ASSIGNMENT);
+  /**
+   * Optional lifecycle-status tracking.
+   *
+   * A Pair can eventually use:
+   *
+   * PENDING
+   * ACTIVE
+   * SUSPENDED
+   * ARCHIVED
+   *
+   * For now we initialise existing pairings as ACTIVE.
+   */
+  const [pairingStatus, setPairingStatus] =
+    useState(() => {
+      const initial = {};
 
+      for (const nft of NFTS) {
+        initial[nft.tokenId] = "ACTIVE";
+      }
+
+      return initial;
+    });
+
+  /**
+   * Create an easy lookup map for registered items.
+   */
   const assetByCode = useMemo(() => {
     const map = {};
-    for (const a of ASSETS) map[a.code] = a;
+
+    for (const asset of ASSETS) {
+      map[asset.code] = asset;
+    }
+
     return map;
   }, []);
 
+  /**
+   * Group membership NFTs according to their current
+   * Pair / Co-Pair association.
+   */
   const nftsByAsset = useMemo(() => {
     const grouped = {};
+
     for (const nft of NFTS) {
-      const code = assignment[nft.tokenId];
-      if (!grouped[code]) grouped[code] = [];
+      const code = pairings[nft.tokenId];
+
+      if (!code) continue;
+
+      if (!grouped[code]) {
+        grouped[code] = [];
+      }
+
       grouped[code].push(nft);
     }
-    return grouped;
-  }, [assignment]);
 
-  // migrate ALL NFTs from one asset to another
-  function migrateAll(fromCode, toCode) {
-    setAssignment((prev) => {
-      const next = { ...prev };
-      for (const [tokenId, code] of Object.entries(prev)) {
-        if (code === fromCode) next[tokenId] = toCode;
+    return grouped;
+  }, [pairings]);
+
+  /**
+   * Determine whether this should visually be treated
+   * as a Pair or Co-Pair.
+   *
+   * One membership associated with a registered item:
+   * PAIR
+   *
+   * Two or more membership credentials independently
+   * associated with the same registered item:
+   * CO-PAIR
+   */
+  function getAssociationType(assetCode) {
+    const associated =
+      nftsByAsset[assetCode] || [];
+
+    return associated.length > 1
+      ? "CO-PAIR"
+      : "PAIR";
+  }
+
+  /**
+   * Re-Pair all membership associations from one
+   * registered item to another.
+   *
+   * This changes association records only.
+   *
+   * It does NOT transfer ownership or economic rights.
+   */
+  function rePairAll(fromCode, toCode) {
+    setPairings((previous) => {
+      const next = { ...previous };
+
+      for (const [tokenId, code] of Object.entries(previous)) {
+        if (code === fromCode) {
+          next[tokenId] = toCode;
+        }
       }
+
+      return next;
+    });
+
+    setPairingStatus((previous) => {
+      const next = { ...previous };
+
+      for (const [tokenId, code] of Object.entries(pairings)) {
+        if (code === fromCode) {
+          next[tokenId] = "ACTIVE";
+        }
+      }
+
       return next;
     });
   }
 
-  // migrate a single NFT
-  function migrateOne(tokenId, toCode) {
-    setAssignment((prev) => ({ ...prev, [tokenId]: toCode }));
+  /**
+   * Re-Pair a single membership credential.
+   *
+   * This updates only the GLSDefi association record.
+   */
+  function rePairOne(tokenId, toCode) {
+    setPairings((previous) => ({
+      ...previous,
+      [tokenId]: toCode,
+    }));
+
+    setPairingStatus((previous) => ({
+      ...previous,
+      [tokenId]: "ACTIVE",
+    }));
+  }
+
+  /**
+   * Suspend an association.
+   *
+   * Useful where the underlying registered item
+   * is sold, removed, disputed, unavailable, or
+   * otherwise no longer eligible for an active Pair.
+   */
+  function suspendPairing(tokenId) {
+    setPairingStatus((previous) => ({
+      ...previous,
+      [tokenId]: "SUSPENDED",
+    }));
+  }
+
+  /**
+   * Archive an association.
+   *
+   * The historical relationship remains visible
+   * but is no longer active.
+   */
+  function archivePairing(tokenId) {
+    setPairingStatus((previous) => ({
+      ...previous,
+      [tokenId]: "ARCHIVED",
+    }));
   }
 
   return (
     <div className="App">
-      <Container style={{ paddingTop: 30, paddingBottom: 40 }}>
+      <Container
+        style={{
+          maxWidth: 1100,
+          paddingTop: 30,
+          paddingBottom: 40,
+        }}
+      >
+        {/* ===================================================== */}
+        {/* NAVIGATION */}
+        {/* ===================================================== */}
 
-        {/* ===== NAVIGATION ===== */}
         <div
           style={{
             display: "flex",
@@ -69,38 +233,135 @@ export default function AssetPairs() {
             flexWrap: "wrap",
           }}
         >
-          <Link to="/" className="App-link">
+          <Link
+            to="/"
+            className="App-link"
+          >
             Home
           </Link>
 
-          <Link to="/alpha/marketplace" className="App-link">
+          <Link
+            to="/alpha/marketplace"
+            className="App-link"
+          >
             Marketplace
           </Link>
 
-          <span style={{ fontWeight: 700, opacity: 0.8 }}>
-            Asset ↔ NFT Pairing
+          <Link
+            to="/disclaimer"
+            className="App-link"
+          >
+            Disclosure &amp; Risk Information
+          </Link>
+
+          <span
+            style={{
+              fontWeight: 700,
+              opacity: 0.8,
+            }}
+          >
+            Membership Pair / Co-Pair Registry
           </span>
         </div>
 
-        {/* ===== PAGE HEADER ===== */}
-        <h1 style={{ textAlign: "center", marginBottom: 10 }}>
-          Items ↔ NFT Pairing
+        {/* ===================================================== */}
+        {/* PAGE HEADER */}
+        {/* ===================================================== */}
+
+        <h1
+          style={{
+            textAlign: "center",
+            marginBottom: 10,
+          }}
+        >
+          Membership Pair / Co-Pair Associations
         </h1>
 
-        <p style={{ textAlign: "center", opacity: 0.85, marginBottom: 30 }}>
-          GLSDefi Members may opt to pair/co-pair to a different
-          asset if a paired item is sold.
+        <p
+          style={{
+            textAlign: "center",
+            opacity: 0.85,
+            maxWidth: 850,
+            margin: "0 auto 22px",
+          }}
+        >
+          GLSDefi membership credentials may maintain authorised
+          Pair or Co-Pair associations with registered item records.
+          These associations are informational and membership-related
+          only.
         </p>
 
-        {/* ===== ASSET SECTIONS ===== */}
+        {/* ===================================================== */}
+        {/* ER-0 NOTICE */}
+        {/* ===================================================== */}
+
+        <div
+          style={{
+            maxWidth: 900,
+            margin: "0 auto 32px",
+            padding: 18,
+            borderRadius: 12,
+            border: "1px solid rgba(11,61,145,0.28)",
+            background: "#f7f9fc",
+          }}
+        >
+          <div
+            style={{
+              fontWeight: 800,
+              marginBottom: 8,
+            }}
+          >
+            Pair / Co-Pair Association Notice
+          </div>
+
+          <p
+            style={{
+              marginTop: 0,
+              marginBottom: 8,
+            }}
+          >
+            Pair and Co-Pair are membership association mechanisms
+            only. They do not create or represent legal ownership,
+            beneficial ownership, fractional ownership, equity,
+            security interests, income rights, profit rights,
+            appreciation rights, sale-proceeds rights, redemption
+            rights, or collateral rights in a registered item.
+          </p>
+
+          <div
+            style={{
+              fontWeight: 800,
+            }}
+          >
+            Economic Rights Classification:
+            {" "}
+            ER-0 — No Economic Interest
+          </div>
+
+          <div
+            style={{
+              marginTop: 10,
+            }}
+          >
+            <Link to="/disclaimer">
+              Read the full Disclosure, Pair/Co-Pair and Risk Information
+            </Link>
+          </div>
+        </div>
+
+        {/* ===================================================== */}
+        {/* REGISTERED ITEM SECTIONS */}
+        {/* ===================================================== */}
+
         {ASSETS.map((asset) => {
-          const perNft = asset.valueUsd / asset.totalNfts;
-          const assigned = nftsByAsset[asset.code] || [];
+          const associatedNfts =
+            nftsByAsset[asset.code] || [];
+
+          const associationType =
+            getAssociationType(asset.code);
 
           return (
             <section
-            
-              
               key={asset.code}
               style={{
                 marginBottom: 28,
@@ -111,8 +372,11 @@ export default function AssetPairs() {
                 background: "#fff",
               }}
             >
+              {/* ================================================= */}
+              {/* STATUS BADGE */}
+              {/* ================================================= */}
 
-{asset.status === "SOLD" && (
+              {asset.status === "SOLD" && (
                 <div
                   style={{
                     position: "absolute",
@@ -128,10 +392,14 @@ export default function AssetPairs() {
                     zIndex: 2,
                   }}
                 >
-                  SOLD
+                  ITEM SOLD
                 </div>
               )}
-              {/* ASSET HEADER */}
+
+              {/* ================================================= */}
+              {/* REGISTERED ITEM HEADER */}
+              {/* ================================================= */}
+
               <div
                 style={{
                   display: "flex",
@@ -141,86 +409,159 @@ export default function AssetPairs() {
                 }}
               >
                 {/* LEFT */}
-                <div>
-                  <h2 style={{ marginBottom: 6 }}>{asset.name}</h2>
-                  <div>
-                    <strong>Asset Code:</strong> {asset.code}
-                  </div>
-                  <div>
-                    <strong>Status:</strong> {asset.status}
-                  </div>
-                  {asset.status === "SOLD" && !isOwner && (
-  <div style={{ marginTop: 10, opacity: 0.85 }}>
-    This item has sold.  
-    GLSDefi Members may opt to pair/co-pair to a different
-          asset, meanwhile your pair/co-pair will be reassigned.
-  </div>
-)}
 
+                <div>
+                  <h2
+                    style={{
+                      marginBottom: 6,
+                    }}
+                  >
+                    {asset.name}
+                  </h2>
+
+                  <div>
+                    <strong>
+                      Registered Item Code:
+                    </strong>
+                    {" "}
+                    {asset.code}
+                  </div>
+
+                  <div>
+                    <strong>Status:</strong>
+                    {" "}
+                    {asset.status}
+                  </div>
+
+                  <div>
+                    <strong>
+                      Association Type:
+                    </strong>
+                    {" "}
+                    {associationType}
+                  </div>
+
+                  <div>
+                    <strong>
+                      Rights Classification:
+                    </strong>
+                    {" "}
+                    ER-0
+                  </div>
+
+                  {asset.status === "SOLD" && (
+                    <div
+                      style={{
+                        marginTop: 12,
+                        maxWidth: 650,
+                        opacity: 0.85,
+                      }}
+                    >
+                      This registered item is no longer active for
+                      new Pair or Co-Pair associations. Existing
+                      associations may be suspended or archived.
+                      Eligible members may later request a new
+                      association with another registered item.
+                    </div>
+                  )}
                 </div>
 
                 {/* RIGHT */}
+
                 <div>
-                  {asset.hiddenValue ? (
-                    <div>
-                      <strong>Asset Value:</strong>{" "}
-                      <span style={{ fontStyle: "italic", opacity: 0.8 }}>
-                        To be auctioned
-                      </span>
-                    </div>
-                  ) : (
-                    <>
-                      <div>
-                        <strong>Asset Value:</strong>{" "}
-                        {money(asset.valueUsd)}
-                      </div>
-                    </>
-                  )}
-
                   <div>
-                    <strong>Capped NFTs:</strong> {asset.cappedSupply}
-                  </div>
-                  <div>
-                    <strong>NFTs Shown:</strong> {assigned.length}
+                    <strong>
+                      Active Membership Associations:
+                    </strong>
+                    {" "}
+                    {associatedNfts.length}
                   </div>
 
-                  {asset.status === "SOLD" && isOwner && (
-  <button
-    className="wallet-btn"
-    onClick={() =>
-      setBuybackOffers((prev) => ({
-        ...prev,
-        [asset.code]: {
-          priceUsd: asset.valueUsd * 0.1, // example
-          status: "OPEN",
-        },
-      }))
-    }
-  >
-    Create Buyback Offer
-  </button>
-)}
+                  <div>
+                    <strong>
+                      Ownership Represented:
+                    </strong>
+                    {" "}
+                    No
+                  </div>
 
+                  <div>
+                    <strong>
+                      Economic Interest:
+                    </strong>
+                    {" "}
+                    None
+                  </div>
                 </div>
               </div>
 
-              {/* MIGRATE ALL */}
-              {isOwner && (
-  <div style={{ marginTop: 14, display: "flex", gap: 10, flexWrap: "wrap" }}>
-    <span style={{ fontWeight: 700 }}>Migrate all NFTs →</span>
-    {ASSETS.filter((a) => a.code !== asset.code).map((target) => (
-      <button
-        key={target.code}
-        className="wallet-btn"
-        onClick={() => migrateAll(asset.code, target.code)}
-      >
-        {target.code}
-      </button>
-    ))}
-  </div>
-)}
+              {/* ================================================= */}
+              {/* ADMIN RE-PAIR ALL */}
+              {/* ================================================= */}
 
-              {/* NFT GRID */}
+              {isAdmin &&
+                associatedNfts.length > 0 && (
+                  <div
+                    style={{
+                      marginTop: 16,
+                      paddingTop: 14,
+                      borderTop:
+                        "1px solid rgba(0,0,0,0.08)",
+                    }}
+                  >
+                    <div
+                      style={{
+                        fontWeight: 700,
+                        marginBottom: 8,
+                      }}
+                    >
+                      Administrator Association Controls
+                    </div>
+
+                    <div
+                      style={{
+                        display: "flex",
+                        gap: 10,
+                        flexWrap: "wrap",
+                      }}
+                    >
+                      <span
+                        style={{
+                          fontWeight: 700,
+                        }}
+                      >
+                        Re-Pair all →
+                      </span>
+
+                      {ASSETS
+                        .filter(
+                          (target) =>
+                            target.code !== asset.code &&
+                            target.status !== "SOLD"
+                        )
+                        .map((target) => (
+                          <button
+                            key={target.code}
+                            className="wallet-btn"
+                            type="button"
+                            onClick={() =>
+                              rePairAll(
+                                asset.code,
+                                target.code
+                              )
+                            }
+                          >
+                            {target.code}
+                          </button>
+                        ))}
+                    </div>
+                  </div>
+                )}
+
+              {/* ================================================= */}
+              {/* MEMBERSHIP NFT GRID */}
+              {/* ================================================= */}
+
               <div
                 style={{
                   display: "grid",
@@ -230,95 +571,286 @@ export default function AssetPairs() {
                   marginTop: 18,
                 }}
               >
-                {assigned.length === 0 ? (
-                  <div style={{ opacity: 0.7 }}>
-                    No NFTs currently paired with this asset.
+                {associatedNfts.length === 0 ? (
+                  <div
+                    style={{
+                      opacity: 0.7,
+                    }}
+                  >
+                    No membership credentials are currently
+                    associated with this registered item.
                   </div>
                 ) : (
-                  assigned.map((nft) => (
-                    <div
-                      key={nft.tokenId}
-                      style={{
-                        border: "1px solid rgba(0,0,0,0.12)",
-                        borderRadius: 12,
-                        overflow: "hidden",
-                        background: "#fff",
-                      }}
-                    >
-                      <img
-                        src={nft.previewImage}
-                        alt={nft.tokenId}
+                  associatedNfts.map((nft) => {
+                    const status =
+                      pairingStatus[nft.tokenId] ||
+                      "ACTIVE";
+
+                    return (
+                      <div
+                        key={nft.tokenId}
                         style={{
-                          width: "100%",
-                          height: 220,
-                          objectFit: "cover",
+                          border:
+                            "1px solid rgba(0,0,0,0.12)",
+                          borderRadius: 12,
+                          overflow: "hidden",
+                          background: "#fff",
                         }}
-                      />
+                      >
+                        <img
+                          src={nft.previewImage}
+                          alt={nft.tokenId}
+                          style={{
+                            width: "100%",
+                            height: 220,
+                            objectFit: "cover",
+                          }}
+                        />
 
-                      <div style={{ padding: 12 }}>
-                        <div style={{ fontWeight: 700 }}>
-                          {nft.tokenId}
+                        <div
+                          style={{
+                            padding: 12,
+                          }}
+                        >
+                          {/* TOKEN ID */}
+
+                          <div
+                            style={{
+                              fontWeight: 700,
+                            }}
+                          >
+                            {nft.tokenId}
+                          </div>
+
+                          {/* ASSOCIATION DETAILS */}
+
+                          <div
+                            style={{
+                              opacity: 0.85,
+                              marginTop: 8,
+                              lineHeight: 1.6,
+                            }}
+                          >
+                            <div>
+                              <strong>
+                                Association:
+                              </strong>
+                              {" "}
+                              {associationType}
+                            </div>
+
+                            <div>
+                              <strong>
+                                Registered Item:
+                              </strong>
+                              {" "}
+                              {pairings[nft.tokenId]}
+                            </div>
+
+                            <div>
+                              <strong>
+                                Pair Status:
+                              </strong>
+                              {" "}
+                              {status}
+                            </div>
+
+                            <div>
+                              <strong>
+                                Rights Class:
+                              </strong>
+                              {" "}
+                              ER-0 — No Economic Interest
+                            </div>
+
+                            <div>
+                              <strong>
+                                Ownership Represented:
+                              </strong>
+                              {" "}
+                              No
+                            </div>
+
+                            <div>
+                              <strong>
+                                Fractional Interest:
+                              </strong>
+                              {" "}
+                              No
+                            </div>
+
+                            <div>
+                              <strong>
+                                Right to Asset Income:
+                              </strong>
+                              {" "}
+                              No
+                            </div>
+
+                            <div>
+                              <strong>
+                                Right to Sale Proceeds:
+                              </strong>
+                              {" "}
+                              No
+                            </div>
+                          </div>
+
+                          {/* ===================================== */}
+                          {/* ADMIN SINGLE-PAIR CONTROLS */}
+                          {/* ===================================== */}
+
+                          {isAdmin && (
+                            <div
+                              style={{
+                                marginTop: 12,
+                                paddingTop: 10,
+                                borderTop:
+                                  "1px solid rgba(0,0,0,0.08)",
+                              }}
+                            >
+                              <div
+                                style={{
+                                  fontWeight: 700,
+                                  fontSize: 13,
+                                  marginBottom: 8,
+                                }}
+                              >
+                                Association Controls
+                              </div>
+
+                              <div
+                                style={{
+                                  display: "flex",
+                                  gap: 8,
+                                  flexWrap: "wrap",
+                                }}
+                              >
+                                {ASSETS
+                                  .filter(
+                                    (target) =>
+                                      target.code !==
+                                        pairings[
+                                          nft.tokenId
+                                        ] &&
+                                      target.status !==
+                                        "SOLD"
+                                  )
+                                  .map((target) => (
+                                    <button
+                                      key={target.code}
+                                      className="wallet-btn secondary"
+                                      type="button"
+                                      onClick={() =>
+                                        rePairOne(
+                                          nft.tokenId,
+                                          target.code
+                                        )
+                                      }
+                                    >
+                                      Re-Pair →{" "}
+                                      {target.code}
+                                    </button>
+                                  ))}
+
+                                {status === "ACTIVE" && (
+                                  <button
+                                    className="wallet-btn secondary"
+                                    type="button"
+                                    onClick={() =>
+                                      suspendPairing(
+                                        nft.tokenId
+                                      )
+                                    }
+                                  >
+                                    Suspend Pair
+                                  </button>
+                                )}
+
+                                {status !== "ARCHIVED" && (
+                                  <button
+                                    className="wallet-btn secondary"
+                                    type="button"
+                                    onClick={() =>
+                                      archivePairing(
+                                        nft.tokenId
+                                      )
+                                    }
+                                  >
+                                    Archive Pair
+                                  </button>
+                                )}
+                              </div>
+                            </div>
+                          )}
                         </div>
-
-                        <div style={{ opacity: 0.8, marginTop: 6 }}>
-                          Paired to:{" "}
-                          <strong>
-                            {assignment[nft.tokenId]}
-                          </strong>
-                        </div>
-                        {asset.status === "SOLD" &&
-  buybackOffers[asset.code]?.status === "OPEN" && (
-    <div
-      style={{
-        marginTop: 10,
-        padding: 10,
-        borderRadius: 8,
-        background: "#e9f0ff",
-        border: "1px solid #0b3d91",
-      }}
-    >
-      <strong>Buyback Offer:</strong>{" "}
-      {money(buybackOffers[asset.code].priceUsd)}
-      <div style={{ marginTop: 6 }}>
-        <button className="wallet-btn secondary">
-          Accept Offer
-        </button>
-      </div>
-    </div>
-)}
-
-                        {/* MOVE SINGLE NFT (OWNER ONLY) */}
-{isOwner && (
-  <div
-    style={{
-      marginTop: 10,
-      display: "flex",
-      gap: 8,
-      flexWrap: "wrap",
-    }}
-  >
-    {ASSETS.filter(
-      (a) => a.code !== assignment[nft.tokenId]
-    ).map((target) => (
-      <button
-        key={target.code}
-        className="wallet-btn secondary"
-        onClick={() => migrateOne(nft.tokenId, target.code)}
-      >
-        Move → {target.code}
-      </button>
-    ))}
-  </div>
-)}
-
                       </div>
-                    </div>
-                  ))
+                    );
+                  })
                 )}
               </div>
             </section>
           );
         })}
+
+        {/* ===================================================== */}
+        {/* FINAL CLARIFICATION */}
+        {/* ===================================================== */}
+
+        <div
+          style={{
+            marginTop: 30,
+            padding: 18,
+            borderRadius: 12,
+            background: "#f7f9fc",
+            border: "1px solid rgba(0,0,0,0.10)",
+          }}
+        >
+          <strong>
+            Important clarification
+          </strong>
+
+          <p
+            style={{
+              marginTop: 8,
+              marginBottom: 8,
+            }}
+          >
+            A GLSDefi Pair or Co-Pair record confirms only
+            that an authorised membership association exists
+            between a membership credential and a registered
+            item record.
+          </p>
+
+          <p
+            style={{
+              marginBottom: 8,
+            }}
+          >
+            It does not establish, transfer, divide, or prove
+            legal title, beneficial ownership, fractional
+            ownership, security interests, rights to income,
+            rights to appreciation, rights to sale proceeds,
+            or rights of redemption in relation to the
+            registered item.
+          </p>
+
+          <strong>
+            Standard classification:
+            {" "}
+            ER-0 — No Economic Interest
+          </strong>
+
+          <div
+            style={{
+              marginTop: 10,
+            }}
+          >
+            <Link to="/disclaimer">
+              View the complete GLSDefi Disclosure &amp; Risk Information
+            </Link>
+          </div>
+        </div>
       </Container>
     </div>
   );
