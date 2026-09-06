@@ -81,9 +81,8 @@ const sortedItems = [...itemsForSale].sort((a, b) => {
           <div>
             <h1 style={{ marginBottom: 6 }}>GLSDefi Bravo — Items for Sale</h1>
             <div style={{ opacity: 0.85, maxWidth: 820 }}>
-              Items listed here are available for <strong>members only to preview</strong>{" "}
-              via GLSDefi. To get the best from your membership, contact GLSDefi and reference the relevant{" "}
-              <strong>Asset Code</strong>.
+              Items listed here are available for <strong>members to pair-share</strong>{" "}
+              .{" "}
             </div>
           </div>
 
@@ -235,7 +234,7 @@ const sortedItems = [...itemsForSale].sort((a, b) => {
 
 
                   <div className="market-footnote">
-                    For members access only.
+                    GLSDefi Members hold GLSDefiBravo 0xa7bE0301229f49d6ec999D22fdBea20fc3Dbdd7E.
                   </div>
                 </div>
               </div>

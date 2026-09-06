@@ -64,7 +64,17 @@ export default function BravoProject() {
           <div style={{ opacity: 0.85, fontSize: 13 }}>
             Mint occurs in ETH on the Bravo contract.
           </div>
+          <p>
+  By acquiring a GLSDefi membership NFT, you acknowledge that
+  Pair and Co-Pair relationships are association records only
+  and are classified ER-0 — No Economic Interest.
+</p>
 
+<p>
+  <Link to="/disclaimer">
+    Read the Disclosure, Pair/Co-Pair and Risk Information
+  </Link>
+</p>
           <div className="mint-center">
             <Cards project="bravo" />
           </div>

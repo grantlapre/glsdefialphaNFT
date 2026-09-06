@@ -15,9 +15,9 @@ export const NFTS = [
   
   // This is the key: tokenId -> assetCode (can change over time)
   export const INITIAL_ASSIGNMENT = {
-    "GLSDefiAlpha #0": "0001",
-    "GLSDefiAlpha #1": "0001",
-    "GLSDefiAlpha #2": "0001",
-    "GLSDefiAlpha #3": "0001",
+    "GLSDefiAlpha #0": "0002",
+    "GLSDefiAlpha #1": "0002",
+    "GLSDefiAlpha #2": "0003",
+    "GLSDefiAlpha #3": "0003",
   };
   

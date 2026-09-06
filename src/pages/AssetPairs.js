@@ -73,7 +73,7 @@ export default function AssetPairs() {
             Home
           </Link>
 
-          <Link to="/marketplace" className="App-link">
+          <Link to="/alpha/marketplace" className="App-link">
             Marketplace
           </Link>
 
@@ -88,7 +88,7 @@ export default function AssetPairs() {
         </h1>
 
         <p style={{ textAlign: "center", opacity: 0.85, marginBottom: 30 }}>
-          NFT holders who opt to retain ownership may be reassigned to a different
+          GLSDefi Members may opt to pair/co-pair to a different
           asset if a paired item is sold.
         </p>
 
@@ -152,7 +152,8 @@ export default function AssetPairs() {
                   {asset.status === "SOLD" && !isOwner && (
   <div style={{ marginTop: 10, opacity: 0.85 }}>
     This item has sold.  
-    If you hold a paired support NFT, please watch for a buyback offer from GLSDEFI.
+    GLSDefi Members may opt to pair/co-pair to a different
+          asset, meanwhile your pair/co-pair will be reassigned.
   </div>
 )}
 
@@ -172,9 +173,6 @@ export default function AssetPairs() {
                       <div>
                         <strong>Asset Value:</strong>{" "}
                         {money(asset.valueUsd)}
-                      </div>
-                      <div>
-                        <strong>Per NFT (ref):</strong> {money(perNft)}
                       </div>
                     </>
                   )}

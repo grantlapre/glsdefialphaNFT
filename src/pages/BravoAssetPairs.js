@@ -72,8 +72,8 @@ export default function BravoAssetPairs() {
 
         <h1>GLSDefi Bravo — Items ↔ NFT Pairing</h1>
         <p style={{ opacity: 0.85 }}>
-          NFT owners who opt to hold can be reassigned to a different item when an
-          asset is sold.
+        GLSDefi Members may opt to pair/co-pair to a different
+        asset, meanwhile your pair/co-pair will be reassigned if the asset is sold.
         </p>
 
         {ASSETS_BRAVO.map((asset) => {
@@ -131,7 +131,8 @@ export default function BravoAssetPairs() {
                   {asset.status === "SOLD" && !isOwner && (
   <div style={{ marginTop: 10, opacity: 0.85 }}>
     This item has sold.  
-    If you hold a paired support NFT, please watch for a buyback offer from GLSDEFI.
+    GLSDefi Members may opt to pair/co-pair to a different
+          asset, meanwhile your pair/co-pair will be reassigned.
   </div>
 )}
 
@@ -150,9 +151,7 @@ export default function BravoAssetPairs() {
                       <div>
                         <strong>Asset Value:</strong> {money(asset.valueUsd)}
                       </div>
-                      <div>
-                        <strong>Per NFT (ref):</strong> {money(perNft)}
-                      </div>
+
                     </>
                   )}
 

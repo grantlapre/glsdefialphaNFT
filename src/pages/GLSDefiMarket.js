@@ -160,7 +160,7 @@ export default function GLSDefiMarket() {
                   <div className="market-footnote">
                     {item.status === "SOLD"
                       ? "This listing is marked as SOLD. Contact GLSDefi for availability updates."
-                      : "Settlement is handled directly by GLSDefi in a single transaction."}
+                      : "GLSDefi Members hold GLSDefiAlpha 0xA63556e4442cF10EA1d1ABdE363F3FED64d6cff9"}
                   </div>
                 </div>
               </div>

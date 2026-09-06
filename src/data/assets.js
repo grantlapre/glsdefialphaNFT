@@ -26,7 +26,7 @@ export const ASSETS = [
         condition: "Currently in very good condition",
         images: [a1photo1, a1photo2, a1photo3],
         shortDesc:
-          "This item is no longer available for members to pair-share",
+          "This item is no longer available for members to pair/co-pair",
       },
     
       {
@@ -34,8 +34,8 @@ export const ASSETS = [
         name: "GLS Alpha Item 0002",
         valueUsd: 4320,
         hiddenValue: false,
-        totalNfts: 23,
-        cappedSupply: 16,
+        totalNfts: 20,
+        cappedSupply: 14,
         status: "active",
     
         // Marketplace / sales page fields
@@ -45,7 +45,7 @@ export const ASSETS = [
         condition: "Used - 1993 Millard Caravan, tows well, reg'd",
         images: [a2photo1, a2photo2, a2photo3],
         shortDesc: 
-          "This item is available for members to pair-share.",
+          "This item is available for members to pair/co-pair.",
       },
     
       {
@@ -53,8 +53,8 @@ export const ASSETS = [
         name: "GLS Alpha Item 0003",
         valueUsd: 10000,
         hiddenValue: false,
-        totalNfts: 50,
-        cappedSupply: 35,
+        totalNfts: 48,
+        cappedSupply: 33,
         status: "active",
     
         // Marketplace / sales page fields
@@ -64,7 +64,7 @@ export const ASSETS = [
         condition: "19th Century Art - Joseph Charles Nigote [pair]",
         images: [a3photo1],
         shortDesc: 
-          "This item is available for memebers to pair-shair.",
+          "This item is available for members to pair/co-pair.",
       },
 
   ];

@@ -64,7 +64,27 @@ export default function AlphaProject() {
           <div style={{ opacity: 0.85, fontSize: 13 }}>
             Mint occurs in ETH on the Alpha contract.
           </div>
+          <p>
+  By acquiring a GLSDefi membership NFT, you acknowledge that
+  Pair and Co-Pair relationships are association records only
+  and are classified ER-0 — No Economic Interest.
+</p>
 
+<p>
+  <Link to="/disclaimer">
+    Read the Disclosure, Pair/Co-Pair and Risk Information
+  </Link>
+</p>
+<label>
+  <input
+    type="checkbox"
+    checked={acceptedDisclosure}
+    onChange={(e) => setAcceptedDisclosure(e.target.checked)}
+  />
+
+  I have read and accept the GLSDefi Disclosure,
+  Pair/Co-Pair terms and ER-0 classification.
+</label>
           <div className="mint-center">
             <Cards project="alpha" />
           </div>
