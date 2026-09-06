@@ -208,17 +208,7 @@ export default function GLSDefiBravoMarket() {
         {/* DIRECT SALE / ER-0 NOTICE */}
         {/* ===================================================== */}
 
-        <div
-          style={{
-            maxWidth: 900,
-            margin: "24px auto 30px",
-            padding: 18,
-            borderRadius: 12,
-            background: "#f7f9fc",
-            border:
-              "1px solid rgba(11,61,145,0.25)",
-          }}
-        >
+        <div className="market-notice">
           <div
             style={{
               fontWeight: 800,
@@ -524,16 +514,7 @@ export default function GLSDefiBravoMarket() {
                   {/* DIRECT PURCHASE NOTICE */}
                   {/* =========================================== */}
 
-                  <div
-                    style={{
-                      marginTop: 12,
-                      padding: 10,
-                      borderRadius: 8,
-                      background: "#f7f9fc",
-                      fontSize: 13,
-                      lineHeight: 1.5,
-                    }}
-                  >
+                  <div className="market-direct-sale">
                     <strong>
                       Direct Item Purchase
                     </strong>
@@ -631,16 +612,7 @@ export default function GLSDefiBravoMarket() {
         {/* FINAL CLARIFICATION */}
         {/* ===================================================== */}
 
-        <div
-          style={{
-            marginTop: 32,
-            padding: 18,
-            borderRadius: 12,
-            background: "#f7f9fc",
-            border:
-              "1px solid rgba(0,0,0,0.10)",
-          }}
-        >
+        <div className="market-clarification">
           <strong>
             Bravo Marketplace Clarification
           </strong>

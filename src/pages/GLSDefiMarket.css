@@ -526,3 +526,126 @@
         200px;
     }
   }
+
+  /* ============================================================
+   MARKETPLACE INFORMATION PANELS
+   ============================================================ */
+
+.market-notice {
+  max-width: 900px;
+  margin: 24px auto 30px;
+  padding: 18px;
+
+  text-align: left;
+
+  border-radius: 14px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(11, 61, 145, 0.30),
+      rgba(21, 26, 38, 0.95)
+    );
+
+  border:
+    1px solid rgba(97, 218, 251, 0.28);
+
+  color: #ffffff;
+
+  box-shadow:
+    0 10px 24px rgba(0, 0, 0, 0.18);
+}
+
+.market-notice strong {
+  color: #61dafb;
+}
+
+.market-notice p {
+  color: #e6edf7;
+  line-height: 1.55;
+}
+
+.market-notice a {
+  color: #61dafb;
+  font-weight: 600;
+}
+
+.market-notice a:hover {
+  color: #ffffff;
+}
+
+
+/* ============================================================
+   DIRECT ITEM PURCHASE PANEL INSIDE CARD
+   ============================================================ */
+
+.market-direct-sale {
+  margin-top: 12px;
+  padding: 12px;
+
+  border-radius: 10px;
+
+  background:
+    rgba(97, 218, 251, 0.08);
+
+  border:
+    1px solid rgba(97, 218, 251, 0.20);
+
+  color: #dce6f3;
+
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.market-direct-sale strong {
+  color: #61dafb;
+}
+
+
+/* ============================================================
+   MARKETPLACE CLARIFICATION PANEL
+   ============================================================ */
+
+.market-clarification {
+  max-width: 900px;
+
+  margin: 32px auto 0;
+  padding: 18px;
+
+  text-align: left;
+
+  border-radius: 14px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(21, 26, 38, 0.96),
+      rgba(11, 61, 145, 0.24)
+    );
+
+  border:
+    1px solid rgba(255, 255, 255, 0.12);
+
+  color: #ffffff;
+
+  box-shadow:
+    0 10px 24px rgba(0, 0, 0, 0.18);
+}
+
+.market-clarification strong {
+  color: #61dafb;
+}
+
+.market-clarification p {
+  color: #e6edf7;
+  line-height: 1.55;
+}
+
+.market-clarification a {
+  color: #61dafb;
+  font-weight: 600;
+}
+
+.market-clarification a:hover {
+  color: #ffffff;
+}
