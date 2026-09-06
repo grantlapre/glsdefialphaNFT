@@ -180,7 +180,7 @@ export default function BravoAssetPairs() {
   }
 
   return (
-    <div className="App">
+    <div className="pair-page">
       <Container
         style={{
           maxWidth: 1100,
@@ -251,16 +251,7 @@ export default function BravoAssetPairs() {
         </p>
 
         {/* ER-0 NOTICE */}
-        <div
-          style={{
-            maxWidth: 900,
-            margin: "0 auto 32px",
-            padding: 18,
-            borderRadius: 12,
-            border: "1px solid rgba(11,61,145,0.28)",
-            background: "#f7f9fc",
-          }}
-        >
+        <div className="pair-notice">
           <div
             style={{
               fontWeight: 800,
@@ -314,13 +305,10 @@ export default function BravoAssetPairs() {
           return (
             <section
               key={asset.code}
+              className="pair-card"
               style={{
-                marginTop: 18,
+                marginBottom: 28,
                 position: "relative",
-                padding: 16,
-                borderRadius: 12,
-                border: "1px solid rgba(0,0,0,0.12)",
-                background: "#fff",
               }}
             >
               {/* SOLD STATUS */}
@@ -529,12 +517,10 @@ export default function BravoAssetPairs() {
                     return (
                       <div
                         key={nft.tokenId}
+                        className="pair-card"
                         style={{
-                          border:
-                            "1px solid rgba(0,0,0,0.12)",
-                          borderRadius: 12,
                           overflow: "hidden",
-                          background: "#fff",
+                          padding: 0,
                         }}
                       >
                         <img
@@ -742,15 +728,7 @@ export default function BravoAssetPairs() {
         })}
 
         {/* FINAL CLARIFICATION */}
-        <div
-          style={{
-            marginTop: 30,
-            padding: 18,
-            borderRadius: 12,
-            background: "#f7f9fc",
-            border: "1px solid rgba(0,0,0,0.10)",
-          }}
-        >
+        <div className="pair-clarification">
           <strong>
             Important clarification
           </strong>
